@@ -4,12 +4,47 @@
     <title>GARMENTS</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+   <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+     <nav class="nav navbar-nav navbar-left">
+     <span class="Login_Signup_headline">GARMENTS</span>
+     </nav>
+     <nav>
+      <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+       <li><%= link_to 'マイページ' %></li>
+       <li><%= link_to '投稿一覧'%></li>
+       <li><%= link_to '検索'%></li>
+       <li><%= link_to 'logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+      <% else %>
+       <li><%= link_to 'Home', root_path, class: "glyphicon glyphicon-home" %></li>
+       <li><%= link_to 'About', about_path, class: "glyphicon glyphicon-link" %></li>
+       <li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
+       <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+      <% end %>
+      </ul>
+     </nav>
+    </div>
+   </header>
+   <div class='body'>
+      <div class='container'>
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </div>
+    </div>
+
+   <footer>
+     <div class="row">
+      <div class="col-xs-3 col-xs-offset-9">
+        <p>©️GARMENTS</p>
+      </div>
+     </div>
+   </footer>
   </body>
 </html>
