@@ -1,38 +1,38 @@
 require 'test_helper'
 
-class PostsControllerTest < ActionDispatch::IntegrationTest
+class GarmentsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get posts_index_url
+    get garments_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get posts_show_url
+    get garments_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get posts_new_url
+    get garments_new_url
     assert_response :success
   end
 
   test "should get create" do
-    get posts_create_url
+    get garments_create_url
     assert_response :success
   end
 
   test "should get edit" do
-    get posts_edit_url
+    get garments_edit_url
     assert_response :success
   end
 
   test "should get update" do
-    get posts_update_url
+    get garments_update_url
     assert_response :success
   end
 
   test "should get destroy" do
-    get posts_destroy_url
+    get garments_destroy_url
     assert_response :success
   end
 

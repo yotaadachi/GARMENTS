@@ -1,6 +1,6 @@
-class CreatePosts < ActiveRecord::Migration[5.2]
+class CreateGarments < ActiveRecord::Migration[5.2]
   def change
-    create_table :posts do |t|
+    create_table :garments do |t|
       t.integer :user_id
       t.integer :type_id
       t.string :title
