@@ -18,10 +18,10 @@ class Garment < ApplicationRecord
 	}
 
 	# 新規投稿星による評価
-	# validates :rate, numelicality: {
-	# 	less_than_or_equal_to: 5,
-	# 	greater_than_or_equal_to: 1
-	# }, presence: true
+	validates :rate, numericality: {
+		less_than_or_equal_to: 5,
+		greater_than_or_equal_to: 1
+	}, presence: true
 
    # 画像投稿機能
      mount_uploader :image_id, ImageUploader
