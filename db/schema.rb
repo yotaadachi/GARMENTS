@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_074627) do
     t.integer "type_id"
     t.string "title"
     t.string "body"
+    t.integer "type", limit: 1
     t.string "image_id"
     t.float "rate"
     t.datetime "created_at", null: false
@@ -39,12 +40,6 @@ ActiveRecord::Schema.define(version: 2020_08_18_074627) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

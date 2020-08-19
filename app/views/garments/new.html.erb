@@ -2,22 +2,22 @@
  <div class="container">
   <div class="row">
    <h3 class="garments_new" style="padding-top:50px;">新規投稿</h3>
-
+   <%= form_for(@garment) do |f| %>
    <div class="form-group">
 	<label for="garments_image">写真</label>
 	<!-- S3にて実装 -->
 　　</div>
 　　<div class="form-group">
 	<label for="garments_title">タイトル</label>
-	<!-- 入力フォーム -->
+	<%= f.text_field :title %>
 　　</div>
 　　<div class="form-group">
 	<label for="garments_category">カテゴリー</label>
-	<!-- カテゴリーフォームタグ -->
+	<%= f.select :type, Garment.types.keys.to_a, include_blank: '選択してください' %>
 　　</div>
 　　<div class="form-group">
 	<label for="garments_body">本文</label>
-	<!-- 入力フォーム -->
+	<%= f.text_field :body %>
    </div>
    <div class="form-group">
 	<label for="garments_tag">タグ</label>
@@ -25,7 +25,8 @@
    </div>
    <label for="book_rating">評価</label>
 	<!-- 星での評価機能 -->
-	<!-- 投稿ボタン -->
+	<%= f.submit "投稿" %>
+	<% end %>
   </div>
  </div>
 </div>
