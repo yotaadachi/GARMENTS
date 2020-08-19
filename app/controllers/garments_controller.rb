@@ -34,7 +34,7 @@ class GarmentsController < ApplicationController
   private
 
   def garment_params
-  params.require(:garment).permit(:title, :body)
+  params.require(:garment).permit(:title, :body, :image_id, :tag_list)
   end
 
 end
