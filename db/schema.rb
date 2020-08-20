@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_050958) do
 
   create_table "garments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "type_id"
     t.string "title"
     t.string "body"
     t.integer "type", limit: 1

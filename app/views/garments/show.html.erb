@@ -3,27 +3,27 @@
   <div class="row">
    <h3 class="garments_show" style="padding-top: 20px;">投稿詳細</h3>
    　<!-- S3による写真 -->
-   <%= image_tag photo.image_id.to_s %>
+   <%= image_tag @garment.image.to_s %>
    　<!-- S3による写真 -->
 　　<h4>
 	<span class="label label-primary">カテゴリー:<%= @garment.type %></span>
-	<%= render partial: 'garments/tag_list', locals: { garment: @garment } %>
+	<%#= render partial: 'garments/tag_list', locals: { garment: @garment } %>
 　　</h4>
 　　<!-- 星による評価機能 -->
     <div id="star">
      <label for="garments_rating">評価</label>
-     <%= f.hidden_field :rate, id: :review_star %>
+
     </div>
     <script>
     $('#star').raty({
     	size :36,
     	starOff: '<%= asset_path('star-off.png') %>',
     	starOn: '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>,
-        scoreName: 'garment[rate]',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'garment[rate]',
     	half: true,
     	readOnly: true,
-    	score: <%= garment.rate %>
+    	score: <%= @garment.rate %>
     });
     </script>
     <!-- 星による評価機能 -->

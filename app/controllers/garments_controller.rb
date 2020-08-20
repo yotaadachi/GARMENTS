@@ -14,9 +14,6 @@ class GarmentsController < ApplicationController
 
   def create
     garment = Garment.new(garment_params)
-    garment.rate = garment.rate.to_f
-    garment.type_id = 1
-    garment.user_id = current_user.id
      if garment.save
         flash[:notice] = '投稿しました'
         redirect_to garment_path(garment.id)
@@ -38,7 +35,7 @@ class GarmentsController < ApplicationController
   private
 
   def garment_params
-  params.require(:garment).permit(:title, :body, :image, :tag_list, :rate, :type)
+    params.require(:garment).permit(:title, :body, :image, :rate, :type, :user_id)
   end
 
 end

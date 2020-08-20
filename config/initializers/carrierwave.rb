@@ -1,4 +1,4 @@
-unless Rails.env.dependent? || Rails.env.test?
+unless Rails.env.development? || Rails.env.test?
  CarrierWave.configure do |config|
  	config.fog_credentials = {
  		provider: 'AWS',
@@ -9,5 +9,6 @@ unless Rails.env.dependent? || Rails.env.test?
 
  	config.fog_directory = 'garments-photo'
  	config.cache_storage = :fog
+ 	config.fog_public = false
  end
 end
