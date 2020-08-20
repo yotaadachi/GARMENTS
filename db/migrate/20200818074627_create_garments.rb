@@ -6,7 +6,7 @@ class CreateGarments < ActiveRecord::Migration[5.2]
       t.string :title, null: :false
       t.string :body, null: :false
       t.integer :type, null: :false, limit: 1
-      t.string :image_id, null: :false
+      t.string :image, null: :false
       t.float :rate
 
       t.timestamps
