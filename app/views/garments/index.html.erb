@@ -1,2 +1,42 @@
-<h1>Garments#index</h1>
-<p>Find me in app/views/garments/index.html.erb</p>
+<div class="main">
+ <div class="container">
+  <div class="row">
+  	<!-- 並び替えバー -->
+　　<table class="table">
+	<thead>
+		<tr>
+			<th>投稿者</th>
+			<th>タイトル</th>
+			<th>投稿日時</th>
+			<th>お気に入り数</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @garments.each do |garment| %>
+		<tr>
+			<td>
+				<%= link_to user_path(garment.user) do %>
+				<!-- 投稿者サムネイル -->
+				<% end %>
+			</td>
+			<td>
+				<%= garment.title %>
+			</td>
+			<td>
+				<%= garment.created_at %>
+			</td>
+			<td>
+				<!-- お気に入り数 -->
+			</td>
+			<td>
+				<%= link_to garment_path(garment) do %>
+				<p>詳細</p>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+   </table>
+	<!-- ページ遷移バー -->
+  </div>
+ </div>
+</div>

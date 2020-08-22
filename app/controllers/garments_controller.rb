@@ -1,9 +1,11 @@
 class GarmentsController < ApplicationController
+  before_action :authenticate_user!
   def index
-    garments = Garment.all
+    @garments = Garment.all
   end
 
   def show
+    @garment = Garment.find(params[:id])
   end
 
   def new
@@ -12,7 +14,6 @@ class GarmentsController < ApplicationController
 
   def create
     garment = Garment.new(garment_params)
-    garment.user_id = current_user.id
      if garment.save
         flash[:notice] = '投稿しました'
         redirect_to garment_path(garment.id)
@@ -34,7 +35,7 @@ class GarmentsController < ApplicationController
   private
 
   def garment_params
-  params.require(:garment).permit(:title, :body, :image_id, :tag_list, :rate)
+    params.require(:garment).permit(:title, :body, :image, :rate, :type, :user_id, :tag_list)
   end
 
 end

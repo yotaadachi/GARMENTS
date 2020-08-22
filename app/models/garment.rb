@@ -1,4 +1,5 @@
 class Garment < ApplicationRecord
+	belongs_to :user
 	# タグづけ機能
 	acts_as_taggable
 
@@ -16,13 +17,15 @@ class Garment < ApplicationRecord
 		帽子: 9, #帽子
 		その他: 10, #その他
 	}
+	# attr_accessible  :data, :type
+	self.inheritance_column = :_type_disabled
 
 	# 新規投稿星による評価
-	validates :rate, numericality: {
-		less_than_or_equal_to: 5,
-		greater_than_or_equal_to: 1
-	}, presence: true
+	# validates :rate, numericality: {
+	# 	less_than_or_equal_to: 5,
+	# 	greater_than_or_equal_to: 1
+	# }, presence: true
 
    # 画像投稿機能
-     mount_uploader :image_id, ImageUploader
+     mount_uploader :image, ImageUploader
 end

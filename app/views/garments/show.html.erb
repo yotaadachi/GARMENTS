@@ -1,2 +1,41 @@
-<h1>Garments#show</h1>
-<p>Find me in app/views/garments/show.html.erb</p>
+<div class="main">
+ <div class="container">
+  <div class="row">
+   <h3 class="garments_show" style="padding-top: 20px;">投稿詳細</h3>
+   　<!-- S3による写真 -->
+   <%= image_tag @garment.image.to_s, :size => '350x350' %>
+   　<!-- S3による写真 -->
+　　<h4>
+	<span class="label label-primary">カテゴリー:<%= @garment.type %></span>
+  <span class="label label-primary">タグ:<%= @garment.tag_list %></span>
+　　</h4>
+　　<!-- 星による評価機能 -->
+    <div id="star">
+     <label for="garments_rating">評価</label>
+
+    </div>
+    <script>
+    $('#star').raty({
+    	size :36,
+    	starOff: '<%= asset_path('star-off.png') %>',
+    	starOn: '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'garment[rate]',
+    	half: true,
+    	readOnly: true,
+    	score: <%= @garment.rate %>
+    });
+    </script>
+    <!-- 星による評価機能 -->
+
+    <h4><span>タイトル:<%= @garment.title %></span></h4>
+    <h4><span>本文:<%= @garment.body %></span></h4>
+
+　　<h4>コメント一覧</h4>
+
+　　<!-- お気に入り機能 -->
+
+　　<!-- コメント送信フォーム -->
+  </div>
+ </div>
+</div>
