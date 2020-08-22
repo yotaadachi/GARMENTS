@@ -1,5 +1,15 @@
 class Garment < ApplicationRecord
+	# リレーション
 	belongs_to :user
+
+	# 各カラムバリデーション
+	validates :title, presence: true, length: {minimum: 1}
+	validates :body, presence: true
+	validates :type, presence: true
+	validates :image, presence: true
+	validates :rate, presence: true
+	validates :tag_list, presence: true
+
 	# タグづけ機能
 	acts_as_taggable
 
@@ -21,10 +31,10 @@ class Garment < ApplicationRecord
 	self.inheritance_column = :_type_disabled
 
 	# 新規投稿星による評価
-	# validates :rate, numericality: {
-	# 	less_than_or_equal_to: 5,
-	# 	greater_than_or_equal_to: 1
-	# }, presence: true
+	validates :rate, numericality: {
+		less_than_or_equal_to: 5,
+		greater_than_or_equal_to: 1
+	}, presence: true
 
    # 画像投稿機能
      mount_uploader :image, ImageUploader
