@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get 'search' => 'garments#search', as:'search'
   resources :garments do
   	resources :comments, only: [:create, :destroy]
-  	resource :favorites, only: [:create, :destroy]
+  	resources :favorites, only: [:index, :create, :destroy]
   end
   resources :users do
   get 'follows' => 'relationships#follows'
