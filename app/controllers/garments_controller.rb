@@ -1,7 +1,7 @@
 class GarmentsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @garments = Garment.all
+    @garments = Garment.all.page(params[:page]).reverse_order
   end
 
   def show

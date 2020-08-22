@@ -1,7 +1,11 @@
 <div class="main">
  <div class="container">
   <div class="row">
-  	<!-- 並び替えバー -->
+  	<h3 class="garments_show" style="padding-top: 30px;">投稿一覧</h3>
+  	<!-- 並び替えバーはお気に入り機能作成後に作成 -->
+  	<%#= form_with model: @garment, url:serch_path, method: :get, local: true do |f| %>
+  	 <%#= f.select :keyword, [['並び替え', 'sort'],['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['お気に入りが多い順', 'favorite']] %>
+  	<%# end %>
 　　<table class="table">
 	<thead>
 		<tr>
@@ -23,7 +27,7 @@
 				<%= garment.title %>
 			</td>
 			<td>
-				<%= garment.created_at %>
+				<%= garment.created_at.strftime('%Y年%m月%d日%H:%M') %>
 			</td>
 			<td>
 				<!-- お気に入り数 -->
@@ -34,9 +38,12 @@
 				<% end %>
 			</td>
 		</tr>
+		<% end %>
 	</tbody>
    </table>
-	<!-- ページ遷移バー -->
+   <div class="text-center">
+    <%= paginate @garments %>
+   </div>
   </div>
  </div>
 </div>
