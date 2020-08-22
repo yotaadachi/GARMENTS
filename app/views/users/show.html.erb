@@ -1,2 +1,65 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="main">
+ <div class="container">
+  <div class="row">
+   <%= form_for(@user) do |f| %>
+   <h2 class="user_show" style="padding-top: 30px;"><%= @user.name %></h2>
+   <div class="col-xs-2">
+   	<% if @user.profile_image_id? %>
+   	 <img src='<%= @user.profile_image_id %>' class="icon" alt="ユーザアイコン">
+   	<% else %>
+   	 <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+   	<% end %>
+     <div class="mypage_btn">
+      <% if @user.id == current_user.id %>
+        <%= link_to edit_user_path(current_user), class: 'btn btn-default' do %>
+         <span>プロフィール編集</span>
+        <% end %>
+      <% end %>
+	 </div>
+　　</div>
+　　<div class="col-xs-6">
+	<div class="introduction-header text-center">
+		<p>自己紹介文</p>
+	</div>
+	<div class="introduction">
+		<%= @user.introduction %>
+	</div>
+　　</div>
+　　<div class="col-xs-4">
+	<ul>
+	　<li>
+		<%#= link_to user_follows_path do %>
+	　　  <i class="fa fa-group"></i>
+		 <span class="follow_count"></span>フォロー
+		<%# end %>
+	　</li>
+	  <li>
+	  	<%#= link_to user_followers_path do %>
+		 <i class="fa fa-users"></i>
+		 <span class="follower_count"></span>フォロワー
+		<%# end %>
+	  </li>
+	  <li>
+	  	<%#= link_to garment_favorites_path do %>
+	     <i class="glyphicon glyphicon-star"></i>お気に入り
+	    <%# end %>
+	  </li>
+	  <!-- 自身の投稿一覧ページを作成する -->
+	  <li>
+	  	<%#= link_to garment_favorites_path do %>
+	  　  <i class="glyphicon glyphicon-pencil"></i>投稿一覧
+	  　<%# end %>
+	　</li>
+	  <!-- 自身の投稿一覧ページを作成する -->
+	</ul>
+　　</div>
+   <% end %>
+　　<div class="col-xs-12">
+	<div class="garments_form text-center">
+	<%= link_to new_garment_path, class: 'btn btn-default' do %>
+     <span>新規投稿</span>
+    <% end %>
+   </div>
+  </div>
+ </div>
+</div>
