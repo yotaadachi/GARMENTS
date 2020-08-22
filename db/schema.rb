@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_050958) do
     t.integer "type", limit: 1
     t.string "image"
     t.float "rate"
+    t.string "tag_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

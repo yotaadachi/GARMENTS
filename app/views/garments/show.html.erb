@@ -3,11 +3,11 @@
   <div class="row">
    <h3 class="garments_show" style="padding-top: 20px;">投稿詳細</h3>
    　<!-- S3による写真 -->
-   <%= image_tag @garment.image.to_s %>
+   <%= image_tag @garment.image.to_s, :size => '350x350' %>
    　<!-- S3による写真 -->
 　　<h4>
 	<span class="label label-primary">カテゴリー:<%= @garment.type %></span>
-	<%#= render partial: 'garments/tag_list', locals: { garment: @garment } %>
+  <span class="label label-primary">タグ:<%= @garment.tag_list %></span>
 　　</h4>
 　　<!-- 星による評価機能 -->
     <div id="star">

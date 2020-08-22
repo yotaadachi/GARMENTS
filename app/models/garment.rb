@@ -1,7 +1,7 @@
 class Garment < ApplicationRecord
 	belongs_to :user
 	# タグづけ機能
-	# acts_as_taggable
+	acts_as_taggable
 
 	# 新規投稿カテゴリ
 	enum type:{
