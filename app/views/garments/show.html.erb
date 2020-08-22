@@ -7,12 +7,11 @@
    　<!-- S3による写真 -->
 　　<h4>
 	<span class="label label-primary">カテゴリー:<%= @garment.type %></span>
-  <span class="label label-primary">タグ:<%= @garment.tag_list %></span>
+  <%= render 'garments/tag_list', tag_list: @garment.tag_list %>
 　　</h4>
 　　<!-- 星による評価機能 -->
     <div id="star">
      <label for="garments_rating">評価</label>
-
     </div>
     <script>
     $('#star').raty({
