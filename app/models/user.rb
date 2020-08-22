@@ -4,4 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :garments
+
+  # プロフィール画像
+     mount_uploader :profile_image_id, ImageUploader
 end

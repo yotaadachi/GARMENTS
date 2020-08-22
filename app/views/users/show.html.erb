@@ -2,10 +2,10 @@
  <div class="container">
   <div class="row">
    <%= form_for(@user) do |f| %>
-   <h2 class="user_show" style="padding-top: 30px;"><%= @user.name %></h2>
+   <h2 class="user_show" style="padding-top: 30px;"><%= @user.name %>さんのページ</h2>
    <div class="col-xs-2">
    	<% if @user.profile_image_id? %>
-   	 <img src='<%= @user.profile_image_id %>' class="icon" alt="ユーザアイコン">
+   	 <%= image_tag @user.profile_image_id.to_s, :size => '200x200' %>
    	<% else %>
    	 <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
    	<% end %>
@@ -19,10 +19,10 @@
 　　</div>
 　　<div class="col-xs-6">
 	<div class="introduction-header text-center">
-		<p>自己紹介文</p>
-	</div>
-	<div class="introduction">
+	　<p>自己紹介文</p>
+	　<div class="introduction">
 		<%= @user.introduction %>
+	　</div>
 	</div>
 　　</div>
 　　<div class="col-xs-4">
