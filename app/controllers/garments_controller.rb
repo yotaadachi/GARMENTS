@@ -25,12 +25,28 @@ class GarmentsController < ApplicationController
   end
 
   def edit
+    @garment = Garment.find(params[:id])
+    if @garment.user == current_user
+       render :edit
+    else
+       redirect_to garments_path
+    end
   end
 
   def update
+    @garment = Garment.find(params[:id])
+    if @garment.update(garment_params)
+       flash[:notice] = '投稿を更新しました'
+       redirect_to garment_path(@garment.id)
+    else
+       render :edit
+    end
   end
 
   def destroy
+    garment = Garment.find(params[:id])
+    garment.destroy
+    redirect_to garments_path
   end
 
   private
