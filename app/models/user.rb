@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :garments
 
   # プロフィール画像
-     mount_uploader :profile_image_id, ImageUploader
+     mount_uploader :profile_image, ImageUploader
 end

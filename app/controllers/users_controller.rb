@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
+  def myindex
+    @user = User.find(params[:id])
+    @garments = @user.garments.page(params[:page]).reverse_order
+  end
+
   def edit
     @user = User.find(params[:id])
     if @user == current_user
@@ -24,6 +29,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :profile_image_id, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 end

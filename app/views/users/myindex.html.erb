@@ -1,0 +1,58 @@
+<div class="main">
+ <div class="container">
+  <div class="row">
+  	<h3 class="user_show" style="padding-top: 30px;"><%= @user.name %>さんの投稿一覧</h3>
+  	<!-- 並び替えバーはお気に入り機能作成後に作成 -->
+  	<%#= form_with model: @garment, url:serch_path, method: :get, local: true do |f| %>
+  	 <%#= f.select :keyword, [['並び替え', 'sort'],['投稿が新しい順', 'new'],['投稿が古い順', 'old'],['お気に入りが多い順', 'favorite']] %>
+  	<%# end %>
+　　<table class="table">
+	  <thead>
+		<tr>
+		 <th>投稿者</th>
+	     <th>タイトル</th>
+		 <th>カテゴリ</th>
+		 <th>投稿日時</th>
+		 <th>お気に入り数</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<% @garments.each do |garment| %>
+		<tr>
+		 <td>
+		  <%= link_to user_path(garment.user) do %>
+		   <% if garment.user.profile_image? %>
+   	 　　　   <%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
+   	　　　　 <% else %>
+   	 　　　　　<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+   	　　　　 <% end %>
+		  <% end %>
+		  <br><%= garment.user.name %>
+		 </td>
+		 <td>
+		  <%= garment.title %>
+		 </td>
+		 <td>
+		  <%= garment.type %>
+		 </td>
+		 <td>
+		  <%= garment.created_at.strftime('%Y年%m月%d日%H:%M') %>
+		 </td>
+		 <td>
+		  <!-- お気に入り数 -->
+		 </td>
+		 <td>
+		  <%= link_to garment_path(garment) do %>
+		   <p>詳細</p>
+		  <% end %>
+		  </td>
+		</tr>
+		<% end %>
+	  </tbody>
+   </table>
+   <div class="text-center">
+    <%= paginate @garments %>
+   </div>
+  </div>
+ </div>
+</div>
