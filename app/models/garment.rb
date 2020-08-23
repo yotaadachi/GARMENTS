@@ -1,6 +1,7 @@
 class Garment < ApplicationRecord
 	# リレーション
 	belongs_to :user
+	has_many :comments, dependent: :destroy
 
 	# 各カラムバリデーション
 	validates :title, presence: true, length: {minimum: 1}

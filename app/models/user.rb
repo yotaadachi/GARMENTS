@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :garments
+  has_many :garments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # プロフィール画像
      mount_uploader :profile_image, ImageUploader
