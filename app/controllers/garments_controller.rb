@@ -6,6 +6,7 @@ class GarmentsController < ApplicationController
 
   def show
     @garment = Garment.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -18,7 +19,7 @@ class GarmentsController < ApplicationController
         flash[:notice] = '投稿しました'
         redirect_to garment_path(garment.id)
      else
-        @garments = Garment.all
+        @garments = Garment.all.page(params[:page]).reverse_order
         render :index
      end
   end

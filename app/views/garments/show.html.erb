@@ -30,11 +30,16 @@
     <h4><span>タイトル:<%= @garment.title %></span></h4>
     <h4><span>本文:<%= @garment.body %></span></h4>
 
-　　<h4>コメント一覧</h4>
+　　 <h4>コメント一覧</h4>
+    <div id="comment_area">
+     <%= render partial: 'comments/comments_area', locals: { garment: @garment, comment: @comment } %>
+    </div>
+     <%= form_with(model: [@garment, @comment], remote: true ) do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit "送信", class: "btn btn-default" %>
+     <% end %>
 
 　　<!-- お気に入り機能 -->
-
-　　<!-- コメント送信フォーム -->
   </div>
  </div>
 </div>
