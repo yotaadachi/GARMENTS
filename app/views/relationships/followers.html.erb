@@ -1,0 +1,24 @@
+<h1 class="headline" style="padding-top: 40px;">フォロワー</h1>
+<table class="table">
+ <tbody>
+ <% @users.each do |user| %>
+  <tr class="contents">
+    <td>
+      <%= link_to user_path(user) do %>
+       <% if user.profile_image? %>
+     　 <%= image_tag user.profile_image.to_s, :size => '50x50' %>
+    　 <% else %>
+     　 <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+    　 <% end %>
+      <% end %>
+    </td>
+　　 <td><%= user.name %></td>
+    <td>フォロー数:<%= user.followings.count %></td>
+    <td>フォロワー数:<%= user.followers.count %></td>
+    <td>
+    </td>
+　　 <td><%= link_to "詳細", user_path(user.id) %></td>
+　</tr>
+ <% end %>
+ </tbody>
+</table>
