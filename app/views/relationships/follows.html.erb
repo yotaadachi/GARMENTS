@@ -16,7 +16,7 @@
     <td>フォロー数:<%= user.followings.count %></td>
     <td>フォロワー数:<%= user.followers.count %></td>
     <td id="follow_form">
-     <%= render partial: 'relationships/follow_form', locals: { user: @user } %>
+     <%= render partial: 'relationships/follow_form', locals: { user: user } %>
     </td>
 　　 <td><%= link_to "詳細", user_path(user.id) %></td>
 　</tr>
