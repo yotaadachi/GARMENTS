@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :garments, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_garments, through: :favorites, source: :garment
 
   # プロフィール画像
   mount_uploader :profile_image, ImageUploader

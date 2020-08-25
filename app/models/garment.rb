@@ -3,6 +3,13 @@ class Garment < ApplicationRecord
 	belongs_to :user
 	has_many :comments, dependent: :destroy
 
+	#お気に入り機能
+	has_many :favorites, dependent: :destroy
+
+	def favorite_by?(user)
+		favorites.where(user_id: user.id).exists?
+	end
+
 	# 各カラムバリデーション
 	validates :title, presence: true, length: {minimum: 1}
 	validates :body, presence: true
