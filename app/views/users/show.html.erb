@@ -41,9 +41,9 @@
 		<% end %>
 	  </li>
 	  <li>
-	  	<%#= link_to garment_favorites_path do %>
-	     <i class="glyphicon glyphicon-star"></i>お気に入り
-	    <%# end %>
+	  	<%= link_to user_favorites_path(@user) do %>
+	     <i class="glyphicon glyphicon-star"></i>お気に入り一覧
+	    <% end %>
 	  </li>
 	  <!-- 自身の投稿一覧ページを作成する -->
 	  <li>

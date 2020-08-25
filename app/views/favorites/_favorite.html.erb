@@ -1,0 +1,15 @@
+<% if garment.favorite_by?(current_user) %>
+  <li>
+  <%= link_to garment_favorites_path(garment), method: :delete, remote: true do %>
+    <i class="fa fa-star" aria-hidden="true" style="color: blue;" ></i>
+    <%= garment.favorites.count %>
+  <% end %>
+  </li>
+<% else %>
+  <li>
+  <%= link_to garment_favorites_path(garment), method: :post, remote: true do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+    <%= garment.favorites.count %>
+  <% end %>
+  </li>
+<% end %>

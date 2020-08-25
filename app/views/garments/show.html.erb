@@ -39,7 +39,9 @@
       <%= f.submit "送信", class: "btn btn-default" %>
      <% end %>
 
-　　<!-- お気に入り機能 -->
+　　<div id="favorite_button_<%= @garment.id %>">
+     <%= render partial: 'favorites/favorite', locals: { garment: @garment } %>
+    </div>
 　　<% if @garment.user.id == current_user.id %>
   　　<%= link_to "投稿編集", edit_garment_path, class: "btn btn-success" %>
   　<%= link_to "投稿削除", garment_path(@garment), method: :delete, "data-confirm" => "本当に消してもいいですか?", class: "btn btn-danger" %>
