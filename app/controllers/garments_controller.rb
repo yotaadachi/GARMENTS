@@ -1,14 +1,18 @@
 class GarmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :sort, only: [:index]
-  def index
-    @garments = Garment.all.page(params[:page]).reverse_order
-  end
+  # before_action :sort, only: [:index]
 
-  def sort
-    params[:q] = { sorts: 'id desc, created_at asc, created_at desc'}
-    @sort = Garment.ransack(sort_params)
-    @garments = Garment.all.page(params[:page]).reverse_order
+  def index
+    if params[:q].present?
+    # ソートをした時の処理
+      @sorts = Garment.ransack(sort_params)
+      @garments = @sorts.result.page(params[:page])
+    else
+    # ソートを行う前の処理(default)
+      params[:q] = { sorts: 'id desc' }
+      @sorts = Garment.ransack()
+      @garments = @sorts.result.page(params[:page])
+    end
   end
 
   def show
