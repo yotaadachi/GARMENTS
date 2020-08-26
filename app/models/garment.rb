@@ -6,6 +6,12 @@ class Garment < ApplicationRecord
 	#お気に入り機能
 	has_many :favorites, dependent: :destroy
 
+	#並びかえバー(お気に入りが多い順)
+	ransacker :favorites_count do
+		query = '(SELECT COUNT(favorites.garment_id) FROM favorites where favorites.garment_id = garments.id GROUP BY favorites.garment_id)'
+		Arel.sql(query)
+	end
+
 	def favorite_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end

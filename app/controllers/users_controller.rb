@@ -5,7 +5,16 @@ class UsersController < ApplicationController
 
   def myindex
     @user = User.find(params[:id])
-    @garments = @user.garments.page(params[:page]).reverse_order
+    if params[:q].present?
+    # ソートをした時の処理
+      @sorts = @user.garments.ransack(sort_params)
+      @garments = @sorts.result.page(params[:page])
+    else
+    # ソートを行う前の処理(default)
+      params[:q] = { sorts: 'id desc' }
+      @sorts = @user.garments.ransack()
+      @garments = @sorts.result.page(params[:page])
+    end
   end
 
   def edit
@@ -30,5 +39,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+
+  def sort_params
+    params.require(:q).permit(:sorts)
   end
 end

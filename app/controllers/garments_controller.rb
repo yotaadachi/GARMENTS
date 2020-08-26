@@ -1,7 +1,18 @@
 class GarmentsController < ApplicationController
   before_action :authenticate_user!
+  # before_action :sort, only: [:index]
+
   def index
-    @garments = Garment.all.page(params[:page]).reverse_order
+    if params[:q].present?
+    # ソートをした時の処理
+      @sorts = Garment.ransack(sort_params)
+      @garments = @sorts.result.page(params[:page])
+    else
+    # ソートを行う前の処理(default)
+      params[:q] = { sorts: 'id desc' }
+      @sorts = Garment.ransack()
+      @garments = @sorts.result.page(params[:page])
+    end
   end
 
   def show
@@ -53,6 +64,10 @@ class GarmentsController < ApplicationController
 
   def garment_params
     params.require(:garment).permit(:title, :body, :image, :rate, :type, :user_id, :tag_list)
+  end
+
+  def sort_params
+    params.require(:q).permit(:sorts)
   end
 
 end
