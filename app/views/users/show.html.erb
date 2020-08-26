@@ -56,8 +56,10 @@
 　　</div>
 　　<div class="col-xs-12">
 	<div class="garments_form text-center">
-	<%= link_to new_garment_path, class: 'btn btn-default' do %>
-     <span>新規投稿</span>
+	<% if @user.id == current_user.id %>
+	 <%= link_to new_garment_path, class: 'btn btn-default' do %>
+      <span>新規投稿</span>
+     <% end %>
     <% end %>
    </div>
   </div>

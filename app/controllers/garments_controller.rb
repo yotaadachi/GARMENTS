@@ -1,6 +1,13 @@
 class GarmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :sort, only: [:index]
   def index
+    @garments = Garment.all.page(params[:page]).reverse_order
+  end
+
+  def sort
+    params[:q] = { sorts: 'id desc, created_at asc, created_at desc'}
+    @sort = Garment.ransack(sort_params)
     @garments = Garment.all.page(params[:page]).reverse_order
   end
 
@@ -53,6 +60,10 @@ class GarmentsController < ApplicationController
 
   def garment_params
     params.require(:garment).permit(:title, :body, :image, :rate, :type, :user_id, :tag_list)
+  end
+
+  def sort_params
+    params.require(:q).permit(:sorts)
   end
 
 end
