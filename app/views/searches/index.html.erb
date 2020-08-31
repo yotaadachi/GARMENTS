@@ -1,0 +1,65 @@
+<!-- garments検索結果 -->
+<table>
+	<% if @range == '2' %>
+		<h1 class="Result" style="padding-top: 60px;">投稿検索結果</h1>
+		<thead>
+			<tr>
+				<th>投稿者</th>
+				<th>タイトル</th>
+				<th>カテゴリー</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @garments.each do |garment| %>
+			<tr>
+				<td>
+					<%= link_to user_path(garment.user) do %>
+						<% if garment.user.profile_image? %>
+							<%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
+						<% else %>
+							<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+						<% end %>
+					<% end %>
+					<br><%= garment.user.name %>
+				</td>
+				<td><%= garment.title %></td>
+				<td></td>
+				<td><%= garment.type %></td>
+			</tr>
+    <% end %>
+    </tbody>
+
+	<% else %>
+
+		<h1 class="Result" style="padding-top: 60px;">ユーザー検索結果</h1>
+		<thead>
+			<tr>
+				<th>投稿者</th>
+				<th></th>
+				<th>自己紹介文</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td>
+					<%= link_to user_path(user) do %>
+						<% if user.profile_image? %>
+							<%= image_tag user.profile_image.to_s, :size => '50x50' %>
+						<% else %>
+							<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+						<% end %>
+					<% end %>
+					<br><%= user.name %>
+				</td>
+				<td></td>
+				<td><%= user.introduction %></td>
+				<td><%= link_to "詳細", user_path(user.id) %></td>
+			</tr>
+		<% end %>
+		</tbody>
+
+	<% end %>
+</table>

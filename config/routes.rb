@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   resources :garments do
   	resources :comments, only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
-    # collection do
-    #   match 'sort' => 'garments#sort', via: [:get, :post]
-    # end
   end
   get 'users/:id/myindex' => 'users#myindex', as:'myindex'
   resources :users do
@@ -16,4 +13,5 @@ Rails.application.routes.draw do
   get 'favorites' => 'favorites#index'
   end
   resources :relationships, only: [:create, :destroy]
+  get 'search' => 'searches#index'
 end

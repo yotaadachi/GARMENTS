@@ -32,4 +32,9 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  #検索機能
+  def User.search(word)
+    User.where(["name LIKE?", "#{word}"])
+  end
+
 end
