@@ -16,6 +16,18 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+/*application.html.erb*/
+.navbar-title {
+	color: white;
+	font-size: 25px;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+.navbar-fixed-bottom {
+	color: white;
+	font-size: 15px;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
