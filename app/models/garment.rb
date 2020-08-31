@@ -52,4 +52,11 @@ class Garment < ApplicationRecord
 
    # 画像投稿機能
      mount_uploader :image, ImageUploader
+
+   # 検索機能
+     def Garment.search(word)
+       Garment.where(["title LIKE?", "#{word}"])
+     end
+
+
 end

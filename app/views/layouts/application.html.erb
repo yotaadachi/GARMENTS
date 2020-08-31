@@ -33,6 +33,15 @@
      </nav>
     </div>
    </header>
+   <% if user_signed_in? %>
+    <div class="search-form" style="margin-top: 70px; text-align: center;">
+      <%= form_tag(search_path, method: :get) do %>
+       <%= select_tag 'range', options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿', '2']]) %>
+       <%= text_field_tag (:word) %>
+       <%= submit_tag "検索" %>
+      <% end %>
+    </div>
+  <% end %>
    <div class='body'>
       <div class='container'>
         <p id="notice"><%= notice %></p>
