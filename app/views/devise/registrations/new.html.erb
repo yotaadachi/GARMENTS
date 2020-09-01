@@ -17,9 +17,9 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :パスワード, class: "control-label text-left col-sm-2 col-md-2" %>
+          <%= f.label :パスワード, class: "control-label text-left col-sm-2 col-md-2 password-form" %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <p class="text-left col-sm-2 col-md-2 password-length"><em>(<%= @minimum_password_length %> characters minimum)</em></p>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
