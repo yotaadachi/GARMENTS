@@ -221,7 +221,7 @@
 }
 .introduction {
     font-weight: bold;
-	text-align: center;
+	text-align: left;
 	margin-top: 5px;
 	border-top: 3px solid white;
 	border-bottom: 3px solid white;
@@ -254,6 +254,9 @@ ul {
 .garments-form {
 	text-align: center;
 }
+
+/*users/edit.html.erb*/
+
 
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
