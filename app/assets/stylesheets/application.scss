@@ -271,20 +271,26 @@ select {
 	padding-top: 50px;
 	text-align: center;
 }
-
 /*ページネーション本体のデザイン*/
 .pagination>li>a {
-  border: none;
-  color: #2C7CFF;
+  	border: none;
+  	color: #2C7CFF;
 }
-
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background: black;
-  color: white;
+	background: black;
+	color: white;
 }
-
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  background: #EEEEEE;
+  	background: #EEEEEE;
 }
+
+/*garments/new.html.erb*/
+.garments-new-title {
+	padding-top: 50px;
+	text-align: center;
+}
+
+
+
