@@ -145,8 +145,11 @@
 
 /*registrations/new.html.erb*/
 .form-group {
-	width: 80%;
+	width: 50%;
 	margin: 0 auto;
+}
+.col-md-2 {
+	width: auto;
 }
 .password-form {
 	width: 85px;
@@ -259,5 +262,22 @@ select {
 .pagination>li>a:hover {
   	background: #EEEEEE;
 }
+
+/*garments/show.html.erb*/
+.garments-show .form-group {
+	width: 100%;
+	text-align: left;
+}
+.col-xs-5 {
+	width: auto;
+}
+/*favorites/_favorite.html.erb*/
+.favorite-star:hover {
+	text-decoration: none;
+}
+.fa-star {
+	color: blue;
+}
+
 
 

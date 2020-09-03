@@ -1,15 +1,19 @@
 <% if garment.favorite_by?(current_user) %>
+<ul>
   <li>
-  <%= link_to garment_favorites_path(garment), method: :delete, remote: true do %>
-    <i class="fa fa-star" aria-hidden="true" style="color: blue;" ></i>
-    <%= garment.favorites.count %>
+  <%= link_to garment_favorites_path(garment), method: :delete, remote: true, class: "favorite-star" do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+    <span><%= garment.favorites.count %>件のお気に入り</span>
   <% end %>
   </li>
+</ul>
 <% else %>
+<ul>
   <li>
   <%= link_to garment_favorites_path(garment), method: :post, remote: true do %>
     <i class="fa fa-star" aria-hidden="true"></i>
-    <%= garment.favorites.count %>
+    <span><%= garment.favorites.count %>件のお気に入り</span>
   <% end %>
   </li>
+</ul>
 <% end %>
