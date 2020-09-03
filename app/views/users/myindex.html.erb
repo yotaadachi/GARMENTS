@@ -1,59 +1,58 @@
-<div class="main">
- <div class="container">
-  <div class="row">
-  	<h3 class="user_show" style="padding-top: 30px;"><%= @user.name %>さんの投稿一覧</h3>
-  	<div class="pull-right">
-  	 <%= search_form_for @sorts, url: myindex_path, html: { method: :get } do |f| %>
-  	  <%= f.select( :sorts, {'並び替え': 'id desc', '投稿の古い順': 'created_at asc', '投稿の新しい順': 'created_at desc', 'お気に入りの多い順': 'favorites_count desc'}, {selected: params[:q][:sorts]}, {onchange: 'this.form.submit()'}) %>
-  	 <% end %>
+<div class="myindex">
+	<div class="container">
+  	<div class="row">
+  		<h3 class="users-myindex-title"><%= @user.name %>さんの投稿一覧</h3>
+
+  	<!-- 並び替えタブ -->
+  		<div class="pull-right">
+  	 		<%= search_form_for @sorts, url: myindex_path, html: { method: :get } do |f| %>
+  	  		<%= f.select( :sorts, {'並び替え': 'id desc', '投稿の古い順': 'created_at asc', '投稿の新しい順': 'created_at desc', 'お気に入りの多い順': 'favorites_count desc'}, {selected: params[:q][:sorts]}, {onchange: 'this.form.submit()'})%>
+  	 		<% end %>
+  		</div>
+  	<!-- 並び替えタブ -->
+
+	　　<table class="table">
+
+　　　　<thead>
+				<tr>
+			 		<th class="text-center">投稿者</th>
+		     	<th>タイトル</th>
+			 		<th>カテゴリ</th>
+			 		<th>投稿日時</th>
+			 		<th>お気に入り数</th>
+				</tr>
+		  </thead>
+
+		  <tbody>
+				<% @garments.each do |garment| %>
+				<tr>
+		 			<td><div class="text-center"><%= link_to user_path(garment.user), class: "profile-image" do %>
+		   					<% if garment.user.profile_image? %>
+   	 　　　   			<%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
+   	　　　　 			<% else %>
+   	 　　　　　			<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+   	　　　　 			<% end %>
+		  				<% end %></div>
+		  				<br><div class="text-center"><%= garment.user.name %></div>
+		  		</td>
+				 	<td><%= garment.title %></td>
+				 	<td><span class="label label-primary"><%= garment.type %></span></td>
+				 	<td><%= garment.created_at.strftime('%Y年%m月%d日%H時%M分') %></td>
+				 	<td><%= garment.favorites.count %></td>
+				 	<td><%= link_to garment_path(garment) do %>
+						 		<p>詳細</p>
+				  	 	<% end %>
+				 	</td>
+				</tr>
+				<% end %>
+			  </tbody>
+
+		  </table>
+
+   		<div class="text-center">
+    		<%= paginate @garments %>
+   		</div>
+
   	</div>
-　　<table class="table">
-	  <thead>
-		<tr>
-		 <th>投稿者</th>
-	     <th>タイトル</th>
-		 <th>カテゴリ</th>
-		 <th>投稿日時</th>
-		 <th>お気に入り数</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		<% @garments.each do |garment| %>
-		<tr>
-		 <td>
-		  <%= link_to user_path(garment.user) do %>
-		   <% if garment.user.profile_image? %>
-   	 　　　   <%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
-   	　　　　 <% else %>
-   	 　　　　　<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
-   	　　　　 <% end %>
-		  <% end %>
-		  <br><%= garment.user.name %>
-		 </td>
-		 <td>
-		  <%= garment.title %>
-		 </td>
-		 <td>
-		  <%= garment.type %>
-		 </td>
-		 <td>
-		  <%= garment.created_at.strftime('%Y年%m月%d日%H:%M') %>
-		 </td>
-		 <td>
-		  <!-- お気に入り数 -->
-		 </td>
-		 <td>
-		  <%= link_to garment_path(garment) do %>
-		   <p>詳細</p>
-		  <% end %>
-		  </td>
-		</tr>
-		<% end %>
-	  </tbody>
-   </table>
-   <div class="text-center">
-    <%= paginate @garments %>
-   </div>
-  </div>
- </div>
+	</div>
 </div>
