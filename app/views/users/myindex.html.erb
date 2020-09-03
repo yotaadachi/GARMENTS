@@ -26,13 +26,15 @@
 		  <tbody>
 				<% @garments.each do |garment| %>
 				<tr>
-		 			<td><div class="text-center"><%= link_to user_path(garment.user), class: "profile-image" do %>
-		   					<% if garment.user.profile_image? %>
-   	 　　　   			<%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
-   	　　　　 			<% else %>
-   	 　　　　　			<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
-   	　　　　 			<% end %>
-		  				<% end %></div>
+		 			<td><div class="text-center">
+		 						<%= link_to user_path(garment.user), class: "profile-image" do %>
+		   						<% if garment.user.profile_image? %>
+   	 　　　   				<%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
+   	　　　　 				<% else %>
+   	 　　　　　				<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+   	　　　　 				<% end %>
+		  					<% end %>
+		  				</div>
 		  				<br><div class="text-center"><%= garment.user.name %></div>
 		  		</td>
 				 	<td><%= garment.title %></td>
@@ -45,13 +47,13 @@
 				 	</td>
 				</tr>
 				<% end %>
-			  </tbody>
+			</tbody>
 
-		  </table>
+		 </table>
 
-   		<div class="text-center">
-    		<%= paginate @garments %>
-   		</div>
+   	 <div class="text-center">
+     	<%= paginate @garments %>
+   	 </div>
 
   	</div>
 	</div>

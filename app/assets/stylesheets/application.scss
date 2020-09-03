@@ -266,19 +266,25 @@ select {
 	font-size :16px;
 }
 
-/*ページネーション自体のデザイン*/
+/*garments/index.html.erb*/
+.garments-index-title {
+	padding-top: 50px;
+	text-align: center;
+}
+
+/*ページネーション本体のデザイン*/
 .pagination>li>a {
-	border: none;     /*枠線をなくす*/
-	color: #696969;   /*文字の色を変える*/
+  border: none;
+  color: #2C7CFF;
 }
 
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-	background: #93c9ff;     /*背景の色を変える*/
-	border-radius: 15px;     /*角を丸くする*/
+  background: black;
+  color: white;
 }
 
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
-	border-radius: 15px;    /*角を丸くする*/
+  background: #EEEEEE;
 }
