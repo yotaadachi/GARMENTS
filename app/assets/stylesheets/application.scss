@@ -112,7 +112,7 @@
 }
 
 /*about.html.erb*/
-.about-title {
+.title {
 	padding-top: 50px;
 	text-align: center;
 }
@@ -144,10 +144,6 @@
 }
 
 /*registrations/new.html.erb*/
-.signin-title {
-	padding-top: 50px;
-	text-align: center;
-}
 .form-group {
 	width: 80%;
 	margin: 0 auto;
@@ -171,18 +167,6 @@
 }
 .signin-link {
 	text-align: left;
-}
-
-/*sessions/new.html.erb*/
-.login-title {
-	padding-top: 50px;
-	text-align: center;
-}
-
-/*passwords/new.html.erb*/
-.passwords-title {
-	padding-top: 50px;
-	text-align: center;
 }
 
 /*users/show.html.erb*/
@@ -238,17 +222,7 @@ ul {
 	text-align: center;
 }
 
-/*users/edit.html.erb*/
-.users-edit-title {
-	padding-top: 50px;
-	text-align: center;
-}
-
 /*users/myindex.html.erb*/
-.users-myindex-title {
-	padding-top: 50px;
-	text-align: center;
-}
 .profile-image:hover {
 	text-decoration: none;
 }
@@ -267,10 +241,6 @@ select {
 }
 
 /*garments/index.html.erb*/
-.garments-index-title {
-	padding-top: 50px;
-	text-align: center;
-}
 /*ページネーション本体のデザイン*/
 .pagination>li>a {
   	border: none;
@@ -285,12 +255,5 @@ select {
 .pagination>li>a:hover {
   	background: #EEEEEE;
 }
-
-/*garments/new.html.erb*/
-.garments-new-title {
-	padding-top: 50px;
-	text-align: center;
-}
-
 
 
