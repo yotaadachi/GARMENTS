@@ -3,25 +3,14 @@
     <h3 class="title">投稿詳細</h3>
 
     <div class="row">
-      <div class="col-xs-offset-2 col-xs-5">
-        <%= image_tag @garment.image.to_s, :size => '300x300' %>
+      <div class="col-xs-offset-3 col-xs-3">
+        <%= image_tag @garment.image.to_s, class: "img-rounded", :size => '250x250' %>
 
-　　    <h4><span class="label label-primary">カテゴリー:<%= @garment.type %></span></h4>
-
-        <h4><span><%= render 'garments/tag_list', tag_list: @garment.tag_list %></span></h4>
-
-      </div>
-
-      <div class="col-xs-3">
-        <label for="garments-title",class="control-label text-left col-sm-2 col-md-2">タイトル</label><br />
-          <h4><span><%= @garment.title %></span></h4>
-
-        <label for="garments-title",class="control-label text-left col-sm-2 col-md-2">本文</label><br />
-          <h4><span><%= @garment.body %></span></h4>
-
-          <!-- 星による評価機能 -->
-    　　 <div id="star">
-          <label for="review",class="control-label text-left col-sm-2 col-md-2">評価</label><br />
+        <!-- 星による評価機能 -->
+        <div class="review-star">
+      　　 <div id="star">
+            <label for="review",class="control-label text-left col-sm-2 col-md-2">評価</label>
+          </div>
         </div>
 
         <script>
@@ -37,38 +26,66 @@
           });
         </script>
         <!-- 星による評価機能 -->
+      </div>
 
+      <div class="col-xs-3">
+        <div class="panel panel-default panel-size">
+          <div class="panel-heading">
+            <h5 class="panel-title"><%= @garment.title %></h5>
+          </div>
+
+          <div class="panel-body">
+            <p><span><%= @garment.body %></span></p>
+          </div>
+        </div>
+
+          <!-- カテゴリー -->
+        <div class="garments-category">
+          <span class="label label-primary">カテゴリー:<%= @garment.type %></span>
+        </div>
+          <!-- カテゴリー -->
+
+          <!-- タグ機能 -->
+        <div class="tag-lists">
+          <span><%= render 'garments/tag_list', tag_list: @garment.tag_list %></span>
+        </div>
+          <!-- タグ機能 -->
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-offset-2 col-xs-10">
-        <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-6">
           <!-- お気に入り機能 -->
-    　　  <div id="favorite_button_<%= @garment.id %>">
-            <%= render partial: 'favorites/favorite', locals: { garment: @garment } %>
+        <div id="favorite_button_<%= @garment.id %>">
+          <%= render partial: 'favorites/favorite', locals: { garment: @garment } %>
+        </div>
+          <!-- お気に入り機能 -->
+
+           <!-- 投稿編集・削除機能 -->
+        <div class="text-center mine-edit-delete">
+      　　<% if @garment.user.id == current_user.id %>
+        　　<%= link_to "投稿編集", edit_garment_path, class: "btn btn-success" %>
+        　　<%= link_to "投稿削除", garment_path(@garment), method: :delete, "data-confirm" => "本当に消してもいいですか?", class: "btn btn-danger" %>
+          <% end %>
+        </div>
+          <!-- 投稿編集・削除機能 -->
+
+          <!-- コメント機能 -->
+        <div class="form-group">
+          <h4 class="comment-title">コメント一覧</h4>
+          <div id="comment_area">
+            <%= render partial: 'comments/comments_area', locals: { garment: @garment, comment: @comment } %>
           </div>
-        </div>
-          <!-- お気に入り機能 -->
 
-          <!-- コメント機能 -->
-        <div class="form-group">
-      　　 <h4>コメント一覧</h4>
-            <div id="comment_area">
-              <%= render partial: 'comments/comments_area', locals: { garment: @garment, comment: @comment } %>
-            </div>
-            <%= form_with(model: [@garment, @comment], remote: true ) do |f| %>
-              <%= f.text_area :body, class: "form-control" %>
-              <%= f.submit "送信", class: "btn btn-default btn-lg" %>
-            <% end %>
+          <%= form_with(model: [@garment, @comment], remote: true ) do |f| %>
+            <%= f.text_area :body, class: "form-control" %>
+            <%= f.submit "送信", class: "btn btn-default btn-lg" %>
+          <% end %>
         </div>
           <!-- コメント機能 -->
 
-    　　<% if @garment.user.id == current_user.id %>
-      　　<%= link_to "投稿編集", edit_garment_path, class: "btn btn-success" %>
-      　<%= link_to "投稿削除", garment_path(@garment), method: :delete, "data-confirm" => "本当に消してもいいですか?", class: "btn btn-danger" %>
-        <% end %>
      </div>
     </div>
+
   </div>
 </div>

@@ -45,7 +45,7 @@
 			  <div class="row">
         	<div class="form-group">
           	<div class="row">
-							<%= f.label :タグ, class: "control-label text-left col-sm-2 col-md-2" %><br />
+							<%= f.label :タグ, "タグ　(※複数タグを付ける際にはタグの間を半角カンマにて区切ってください。)", class: "control-label text-left col-sm-2 col-md-2" %><br />
 						</div>
 							<%= f.text_field :tag_list, class: "form-control", value: @garment.tag_list.join(',') %>
 					</div>

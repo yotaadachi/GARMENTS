@@ -15,10 +15,38 @@
 }
 
 /*garments/show.html.erb*/
+.garments-show .title {
+	padding-bottom: 20px;
+}
 .garments-show .form-group {
 	width: 100%;
+	padding-top: 0;
 	text-align: left;
 }
 .col-xs-5 {
 	width: auto;
+}
+.review-star {
+	display: inline-block;
+	width: 60%;
+}
+.mine-edit-delete {
+	padding-right: 90px;
+}
+#star img {
+	width: 18px;
+}
+.panel-size {
+	width: 250px;
+	height: 250px;
+}
+.tag-lists {
+	padding-top: 10px;
+}
+.mine-edit-delete {
+}
+
+.comment-title {
+	font-size: 15px;
+	margin: 0 auto;
 }
