@@ -6,10 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <% if current_page?(root_path) %>
@@ -17,6 +15,7 @@
   <% else %>
     <body style="background-color: #D3D3D3;">
   <% end %>
+
       <header class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
           <nav class="nav navbar-nav navbar-left">
@@ -54,10 +53,10 @@
                 <%= form_tag(search_path, method: :get) do %>
                   <%= select_tag 'range', options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿', '2']]) %>
                   <%= text_field_tag (:word) %>
-                <% end %>
               </div>
               <div class="modal-footer action">
-                <%= submit_tag "検索" %>
+                  <%= submit_tag "検索" %>
+                <% end %>
               </div>
             </div>
           <% end %>
