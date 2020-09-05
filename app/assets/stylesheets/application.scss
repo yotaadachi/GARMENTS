@@ -36,12 +36,29 @@
 	color: white;
 	font-size: 15 px;
 	font-family: 'Noto Sans JP', sans-serif;
+	padding-top: 15px;
 }
 .navbar-title {
 	line-height: 50px;
     padding-left: 15px;
     font-family: 'Rowdies', cursive;
     font-size: 2.5rem;
+}
+/*検索モーダル*/
+.modal-header {
+	border-bottom: 1px solid #e5e5e5;
+}
+.modal-body {
+	padding-right: 20px;
+	text-align: right;
+}
+.search-word {
+	display: inline-block;
+}
+.modal-footer {
+	padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
 }
 
 /*registrations/new.html.erb*/
