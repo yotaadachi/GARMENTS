@@ -1,3 +1,24 @@
-// Place all the styles related to the garments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*garments/index.html.erb*/
+/*ページネーション本体のデザイン*/
+.pagination>li>a {
+  	border: none;
+  	color: #2C7CFF;
+}
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+	background: black;
+	color: white;
+}
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  	background: #EEEEEE;
+}
+
+/*garments/show.html.erb*/
+.garments-show .form-group {
+	width: 100%;
+	text-align: left;
+}
+.col-xs-5 {
+	width: auto;
+}

@@ -1,32 +1,47 @@
-<h1 class="headline" style="padding-top: 40px;">お気に入り一覧</h1>
-<table class="table">
- <thead>
-  <tr>
-    <td>投稿者</td>
-    <td>タイトル</td>
-    <td>カテゴリー</td>
-    <td>お気に入り解除</td>
-  </tr>
- </thead>
- <tbody>
- <% @user.favorites.each do |favorite| %>
-  <tr class="contents">
-    <td>
-      <%= link_to user_path(favorite.garment.user) do %>
-       <% if favorite.garment.user.profile_image? %>
-     　 <%= image_tag favorite.garment.user.profile_image.to_s, :size => '50x50' %>
-    　 <% else %>
-     　 <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
-    　 <% end %>
-      <% end %>
-      <br><%= favorite.garment.user.name %>
-    </td>
-　　 <td><%= favorite.garment.title %></td>
-    <td><%= favorite.garment.type %></td>
-    <td id="favorite_button_<%= favorite.garment.id %>">
-     <%= render partial: 'favorites/favorite', locals: { garment: favorite.garment } %>
-    </td>
-　</tr>
- <% end %>
- </tbody>
-</table>
+<div class="followers">
+  <div class="container">
+    <div class="row">
+      <h3 class="title">お気に入り一覧</h3>
+
+      <table class="table">
+
+       <thead>
+        <tr>
+          <td>投稿者</td>
+          <td>タイトル</td>
+          <td>カテゴリー</td>
+          <td>お気に入り解除</td>
+        </tr>
+       </thead>
+
+       <tbody>
+        <% @user.favorites.each do |favorite| %>
+        <tr>
+          <td>
+            <%= link_to user_path(favorite.garment.user), class: "profile-image" do %>
+              <% if favorite.garment.user.profile_image? %>
+                <%= image_tag favorite.garment.user.profile_image.to_s, :size => '50x50' %>
+          　   <% else %>
+           　    <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+              <% end %>
+            <% end %>
+            <br><%= favorite.garment.user.name %>
+          </td>
+          <td><%= favorite.garment.title %></td>
+          <td><%= favorite.garment.type %></td>
+          <td id="favorite_button_<%= favorite.garment.id %>">
+            <%= render partial: 'favorites/favorite', locals: { garment: favorite.garment } %>
+          </td>
+      　</tr>
+        <% end %>
+       </tbody>
+
+      </table>
+
+      <div class="text-center">
+        <%= paginate @user %>
+      </div>
+
+    </div>
+  </div>
+</div>

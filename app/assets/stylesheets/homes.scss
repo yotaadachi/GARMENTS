@@ -1,3 +1,99 @@
-// Place all the styles related to the homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*top.html.erb*/
+.top {
+	width: 100%;
+	background-image: url(slide1.jpeg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.top::before {
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: ' ';
+}
+.top-title {
+    font-size: 50px;
+    font-family: 'Rowdies', cursive;
+	color: white;
+	padding: 50px 0;
+	text-align: center;
+}
+.btn-cross {
+	display: inline-block;
+	float: left;
+	position: relative;
+	padding: 0.25em 1em;
+	border-top: solid 2px white;
+	border-bottom: solid 2px white;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+.btn-cross:before, .btn-cross:after {
+	content: '';
+	position: absolute;
+	top: -7px;
+	width: 2px;
+	height: -webkit-calc(100% + 14px);
+	height: calc(100% + 14px);
+	background-color: white;
+	transition: .3s;
+}
+.btn-cross:before {
+	left: 7px;
+}
+.btn-cross:after {
+	right: 7px;
+}
+.btn-cross:hover:before {
+	top: 0px;
+	left:0;
+	height: 100%;
+}
+.btn-cross:hover:after {
+	top: 0px;
+	right: 0;
+	height: 100%;
+}
+.btn-cross:hover {
+	color: #CCCCCC;
+	text-decoration: none;
+}
+
+
+/*about.html.erb*/
+.title {
+	padding-top: 50px;
+	text-align: center;
+}
+.about-content {
+	padding-top: 20px;
+	font-size: 20px;
+}
+.image-group {
+	width: 930px;
+	padding-top: 20px;
+	margin: 0 auto;
+}
+.aboutimg {
+	float: left;
+    width: 300px;
+    height: 300px;
+    margin: 10px 10px 0 0;
+    background-size: cover;
+    background-position: center;
+}
+.img1 {
+	background-image: url(about1.jpeg);
+}
+.img2 {
+	background-image: url(about2.jpeg);
+}
+.img3 {
+	background-image: url(about3.jpeg);
+}
