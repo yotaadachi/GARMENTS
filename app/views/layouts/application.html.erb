@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>GARMENTS</title>
     <%= csrf_meta_tags %>
@@ -8,71 +9,75 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav class="nav navbar-nav navbar-left">
-          <span class="navbar-title">GARMENTS</span>
-        </nav>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li><%= link_to 'マイページ', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
-              <li><%= link_to '投稿一覧', garments_path, class: "glyphicon glyphicon-camera" %></li>
-              <li><a class="btn glyphicon glyphicon-search" data-toggle="modal" data-target="#searchModal">検索</a></li>
-              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
-            <% else %>
-              <li><%= link_to 'Home', root_path, class: "glyphicon glyphicon-home" %></li>
-              <li><%= link_to 'About', about_path, class: "glyphicon glyphicon-list-alt" %></li>
-              <li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
-              <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-   </header>
-
-   <!-- 検索モーダル・ダイアログ -->
-   <div class="modal fade" id="searchModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <% if user_signed_in? %>
-          <div class="modal-header">
-            <h5 class="modal-title">検索</h5>
-            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group field">
-              <%= form_tag(search_path, method: :get) do %>
-                <%= select_tag 'range', options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿', '2']]) %>
-                <%= text_field_tag (:word) %>
+  <% if current_page?(root_path) %>
+    <body class="top">
+  <% else %>
+    <body style="background-color: #D3D3D3;">
+  <% end %>
+      <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+          <nav class="nav navbar-nav navbar-left">
+            <span class="navbar-title">GARMENTS</span>
+          </nav>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+                <li><%= link_to 'マイページ', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
+                <li><%= link_to '投稿一覧', garments_path, class: "glyphicon glyphicon-camera" %></li>
+                <li><a class="btn glyphicon glyphicon-search" data-toggle="modal" data-target="#searchModal">検索</a></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+              <% else %>
+                <li><%= link_to 'Home', root_path, class: "glyphicon glyphicon-home" %></li>
+                <li><%= link_to 'About', about_path, class: "glyphicon glyphicon-list-alt" %></li>
+                <li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
+                <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
               <% end %>
-            </div>
-            <div class="modal-footer action">
-              <%= submit_tag "検索" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-   </div>
-   <!-- 検索モーダル・ダイアログ -->
+            </ul>
+          </nav>
+        </div>
+     </header>
 
-   <div class='body'>
-    <div class='container'>
-      <p id="notice"><%= notice %></p>
+     <!-- 検索モーダル・ダイアログ -->
+     <div class="modal fade" id="searchModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <% if user_signed_in? %>
+            <div class="modal-header">
+              <h5 class="modal-title">検索</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group field">
+                <%= form_tag(search_path, method: :get) do %>
+                  <%= select_tag 'range', options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿', '2']]) %>
+                  <%= text_field_tag (:word) %>
+                <% end %>
+              </div>
+              <div class="modal-footer action">
+                <%= submit_tag "検索" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+     </div>
+     <!-- 検索モーダル・ダイアログ -->
+
+     <div class="body">
         <%= yield %>
-    </div>
-   </div>
+        <p id="notice"><%= notice %></p>
+     </div>
 
-   <footer>
-    <div class="row">
-      <div class="col-xs-3 col-xs-offset-9">
-        <p class="navbar navbar-fixed-bottom navbar-inverse text-center">©GARMENTS</p>
+     <footer>
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">
+          <p class="navbar navbar-fixed-bottom navbar-inverse text-center">©GARMENTS</p>
+        </div>
       </div>
-    </div>
-   </footer>
+     </footer>
+
   </body>
 </html>

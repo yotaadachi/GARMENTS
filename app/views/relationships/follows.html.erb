@@ -1,25 +1,40 @@
-<h1 class="headline" style="padding-top: 40px;">フォロー</h1>
-<table class="table">
- <tbody>
- <% @users.each do |user| %>
-  <tr class="contents">
-  	<td>
-      <%= link_to user_path(user) do %>
-       <% if user.profile_image? %>
-     　 <%= image_tag user.profile_image.to_s, :size => '50x50' %>
-    　 <% else %>
-     　 <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
-    　 <% end %>
-      <% end %>
-    </td>
-　　 <td><%= user.name %></td>
-    <td>フォロー数:<%= user.followings.count %></td>
-    <td>フォロワー数:<%= user.followers.count %></td>
-    <td id="follow_form">
-     <%= render partial: 'relationships/follow_form', locals: { user: user } %>
-    </td>
-　　 <td><%= link_to "詳細", user_path(user.id) %></td>
-　</tr>
- <% end %>
- </tbody>
-</table>
+<div class="follows">
+  <div class="container">
+    <div class="row">
+      <h3 class="title">フォロー</h3>
+
+      <table class="table">
+
+       <tbody>
+        <% @users.each do |user| %>
+        <tr>
+        	<td><div class="text-center">
+              <%= link_to user_path(user), class: "profile-image" do %>
+                <% if user.profile_image? %>
+           　      <%= image_tag user.profile_image.to_s, :size => '50x50' %>
+          　     <% else %>
+           　      <img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+          　     <% end %>
+              <% end %>
+            </div>
+            </td>
+      　　 <td><%= user.name %></td>
+          <td>フォロー数:<%= user.followings.count %></td>
+          <td>フォロワー数:<%= user.followers.count %></td>
+          <td id="follow_form">
+            <%= render partial: 'relationships/follow_form', locals: { user: user } %>
+          </td>
+      　　 <td><%= link_to "詳細", user_path(user.id) %></td>
+      　</tr>
+       </tbody>
+       <% end %>
+
+      </table>
+
+      <div class="text-center">
+        <%= paginate @users %>
+      </div>
+
+    </div>
+  </div>
+</div>
