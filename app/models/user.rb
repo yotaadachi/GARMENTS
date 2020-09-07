@@ -21,8 +21,7 @@ class User < ApplicationRecord
 
   #各カラムバリデーション
   validates :name, presence: true
-  validates :introduction, presence: true
-  validates :profile_image, presence: true
+  validates :introduction, length: { maximum: 200 }
 
   def follow(other_user)
     unless self == other_user

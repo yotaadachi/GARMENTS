@@ -2,6 +2,10 @@
   <div class="container">
     <%= form_for(@user) do |f| %>
 
+    <!-- エラーメッセージ -->
+      <%= render 'layouts/error_message', model: f.object %>
+      <!-- エラーメッセージ -->
+
       <div class="row">
         <p id="notice"></p>
         <h2 class="title">登録情報更新</h2>

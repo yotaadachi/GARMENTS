@@ -25,13 +25,12 @@ class GarmentsController < ApplicationController
   end
 
   def create
-    garment = Garment.new(garment_params)
-     if garment.save
-        flash[:notice] = '投稿しました'
-        redirect_to garment_path(garment.id)
+    @garment = Garment.new(garment_params)
+     if @garment.save
+        flash[:notice] = "新規投稿しました"
+        redirect_to garment_path(@garment.id)
      else
-        @garments = Garment.all.page(params[:page]).reverse_order
-        render :index
+        render :new
      end
   end
 
@@ -47,7 +46,7 @@ class GarmentsController < ApplicationController
   def update
     @garment = Garment.find(params[:id])
     if @garment.update(garment_params)
-       flash[:notice] = '投稿を更新しました'
+       flash[:notice] = "投稿内容を更新しました"
        redirect_to garment_path(@garment.id)
     else
        render :edit
@@ -57,6 +56,7 @@ class GarmentsController < ApplicationController
   def destroy
     garment = Garment.find(params[:id])
     garment.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to garments_path
   end
 

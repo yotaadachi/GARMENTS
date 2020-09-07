@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+    attributes:
+      user:
+        name: 名前
+
+  activerecord:
+    models:
+      garment: 投稿
+    attributes:
+      garment:
+        title: タイトル
+        body: 本文
+        type: ジャンル
+        image: 写真
+        rate: 評価
+        tag_list: タグ
