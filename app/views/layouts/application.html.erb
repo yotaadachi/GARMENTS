@@ -46,18 +46,18 @@
           <% if user_signed_in? %>
 
             <div class="modal-header">
-              <h4 class="modal-title">検索フォーム</h4>
               <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+              <h4 class="modal-title">検索フォーム</h4>
             </div>
 
             <div class="modal-body">
+              <div class="search-form form-inline">
                 <%= form_tag(search_path, method: :get) do %>
-                  <%= select_tag 'range', options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿', '2']]) %>
-                  <div class="search-word">
-                    <%= text_field_tag (:word) %>
-                  </div>
+                  <%= select_tag 'range', options_for_select([['---選択してください---',''], ['ユーザー','1'], ['投稿', '2']]), class: "search-select" %>
+                  <%= text_field_tag (:word),"", class: "form-control search-word" %>
                   <%= submit_tag "検索", class: "btn btn-default" %>
                 <% end %>
+              </div>
             </div>
 
             <div class="modal-footer action">

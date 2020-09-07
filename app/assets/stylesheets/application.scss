@@ -49,11 +49,23 @@
 	border-bottom: 1px solid #e5e5e5;
 }
 .modal-body {
-	padding-right: 20px;
-	text-align: right;
+	position: relative;
+    padding: 15px;
+}
+.search-form {
+	margin: 20px;
+    text-align: center;
+}
+.search-select {
+	display: inline-block;
+	border: 1px solid;
 }
 .search-word {
 	display: inline-block;
+	border: 1px solid;
+}
+.search-text {
+	border: 1px solid;
 }
 .modal-footer {
 	padding: 15px;
