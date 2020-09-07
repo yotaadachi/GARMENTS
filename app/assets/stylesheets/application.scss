@@ -44,6 +44,22 @@
     font-family: 'Rowdies', cursive;
     font-size: 2.5rem;
 }
+/*エラーメッセージ*/
+.notice {
+  background-color: #90EE90;
+  color: white;
+  text-align: center;
+}
+
+.alert {
+  background-color: #FA8072;
+  color: white;
+  text-align: center;
+}
+.message-tag {
+	line-height: 40px;
+	padding-top: 50px;
+}
 /*検索モーダル*/
 .modal-header {
 	border-bottom: 1px solid #e5e5e5;
@@ -72,6 +88,28 @@
     text-align: right;
     border-top: 1px solid #e5e5e5;
 }
+
+/*application.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	header {
+		width: 100%;
+	}
+
+	body {
+		width: 100%;
+		margin-top: 150px;
+	}
+	.message-tag {
+		padding-top: 85px;
+	}
+	.navbar-nav li a {
+		text-align: left;
+	}
+	footer {
+		width: 100%;
+	}
+}
+
 
 /*registrations/new.html.erb*/
 .form-group {

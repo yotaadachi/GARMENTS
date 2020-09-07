@@ -16,16 +16,16 @@ class Garment < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
+	# タグづけ機能
+	acts_as_taggable
+
 	# 各カラムバリデーション
-	validates :title, presence: true, length: {minimum: 1}
-	validates :body, presence: true
+	validates :title, presence: true, length: { minimum: 1 }
+	validates :body, presence: true, length: { maximum: 200 }
 	validates :type, presence: true
 	validates :image, presence: true
 	validates :rate, presence: true
 	validates :tag_list, presence: true
-
-	# タグづけ機能
-	acts_as_taggable
 
 	# 新規投稿カテゴリ
 	enum type:{
@@ -42,6 +42,7 @@ class Garment < ApplicationRecord
 		アクセサリー: 10, #アクセサリー
 		その他: 11, #その他
 	}
+
 	# attr_accessible  :data, :type
 	self.inheritance_column = :_type_disabled
 

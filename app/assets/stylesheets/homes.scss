@@ -65,6 +65,12 @@
 	text-decoration: none;
 }
 
+/*top.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	.top {
+		height: 1000px;
+	}
+}
 
 /*about.html.erb*/
 .title {
@@ -96,4 +102,24 @@
 }
 .img3 {
 	background-image: url(about3.jpeg);
+}
+
+/*about.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	.about {
+		width: 100%;
+	}
+	.image-group {
+		width: 100%;
+	}
+	.aboutimg {
+		float: none;
+		margin: 0 auto;
+    	width: 200px;
+        height: 200px;
+
+	}
+	.img3 {
+		margin-bottom: 60px;
+	}
 }
