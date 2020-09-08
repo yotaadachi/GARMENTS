@@ -1,7 +1,7 @@
 /*top.html.erb*/
 .top {
 	width: 100%;
-	background-image: image-url(topimage.jpeg);
+	background-image: image-url("topimage.jpeg");
 	background-repeat: no-repeat;
 	background-position: 20% 20%;
 	background-size: cover;
@@ -96,13 +96,13 @@
     background-position: center;
 }
 .jacket {
-	background-image: image-url(jacket.jpeg);
+	background-image: image-url("jacket.jpeg");
 }
 .knit {
-	background-image: image-url(knit.jpeg);
+	background-image: image-url("knit.jpeg");
 }
 .sandals {
-	background-image: image-url(sandals.jpeg);
+	background-image: image-url("sandals.jpeg");
 }
 
 /*about.html.erb(レスポンシブ対応)*/
