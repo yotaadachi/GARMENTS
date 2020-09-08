@@ -7,7 +7,7 @@
  					<% if @user.profile_image? %>
  	 					<%= image_tag @user.profile_image.to_s, class: "img-circle", :size => '200x200' %>
  					<% else %>
- 	 					<img src="/assets/default.png" class="icon img-circle" alt="ユーザアイコン">
+ 	 					<%= image_tag asset_path("default.png", class: "icon", alt: "ユーザーアイコン") %>
  					<% end %>
  				</div>
    			<div class="profile-btn">

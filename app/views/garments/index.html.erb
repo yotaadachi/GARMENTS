@@ -31,7 +31,7 @@
 						   		<% if garment.user.profile_image? %>
 				   	 　 			<%= image_tag garment.user.profile_image.to_s, :size => '50x50' %>
 				   	　　 	<% else %>
-				   	 　　　		<img src="/assets/default.png" class="icon" alt="ユーザアイコン">
+				   	 　　　		<%= image_tag asset_path("default.png", class: "icon", alt: "ユーザーアイコン") %>
 				   	　　 	<% end %>
 						   	<% end %>
 						  </div>
