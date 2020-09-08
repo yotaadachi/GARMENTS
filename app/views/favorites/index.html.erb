@@ -21,9 +21,9 @@
           <td><div class="text-center">
                 <%= link_to user_path(favorite.garment.user), class: "profile-image" do %>
                   <% if favorite.garment.user.profile_image? %>
-                    <%= image_tag favorite.garment.user.profile_image.to_s, :size => '50x50' %>
+                    <%= image_tag favorite.garment.user.profile_image.to_s, :size => "50x50" %>
               　  <% else %>
-               　   <%= image_tag asset_path("default.png", class: "icon", alt: "ユーザーアイコン") %>
+               　   <%= image_tag asset_path("default.png", alt: "ユーザーアイコン", :size => "50x50") %>
                   <% end %>
                 <% end %>
               </div>

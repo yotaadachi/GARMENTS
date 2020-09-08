@@ -5,9 +5,9 @@
  			<div class="col-md-3">
  				<div class="users-img">
  					<% if @user.profile_image? %>
- 	 					<%= image_tag @user.profile_image.to_s, class: "img-circle", :size => '200x200' %>
+ 	 					<%= image_tag @user.profile_image.to_s, class: "img-circle", :size => "200x200" %>
  					<% else %>
- 	 					<%= image_tag asset_path("default.png", class: "icon", alt: "ユーザーアイコン") %>
+ 	 					<%= image_tag asset_path("default.png", class: "img-circle", alt: "ユーザーアイコン", :size => "200x200") %>
  					<% end %>
  				</div>
    			<div class="profile-btn">
