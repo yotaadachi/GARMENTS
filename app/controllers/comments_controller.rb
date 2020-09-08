@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
 
-　def create
+	def create
 	  @garment = Garment.find(params[:garment_id])
 	  comment = @garment.comments.new(comment_params)
 	  comment.user_id = current_user.id
 	  comment.save
 	  @comment = Comment.new
-　end
+	end
 
 	def destroy
 	  @comment = Comment.find_by(id: params[:id], garment_id: params[:garment_id])
