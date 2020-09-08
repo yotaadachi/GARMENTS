@@ -1,4 +1,7 @@
 /*garments/index.html.erb*/
+.sort-bar {
+	background-color: white;
+}
 /*ページネーション本体のデザイン*/
 .pagination>li>a {
   	border: none;
@@ -79,4 +82,3 @@
 		width: 15%;
 	}
 }
-

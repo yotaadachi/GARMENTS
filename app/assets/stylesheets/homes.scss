@@ -1,7 +1,7 @@
 /*top.html.erb*/
 .top {
 	width: 100%;
-	background-image: url(slide1.jpeg);
+	background-image: url(topimage.jpeg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -51,12 +51,12 @@
 	right: 7px;
 }
 .btn-cross:hover:before {
-	top: 0px;
-	left:0;
+	top: 0;
+	left: 0;
 	height: 100%;
 }
 .btn-cross:hover:after {
-	top: 0px;
+	top: 0;
 	right: 0;
 	height: 100%;
 }
@@ -94,14 +94,14 @@
     background-size: cover;
     background-position: center;
 }
-.img1 {
-	background-image: url(about1.jpeg);
+.jacket {
+	background-image: url(jacket.jpeg);
 }
-.img2 {
-	background-image: url(about2.jpeg);
+.knit {
+	background-image: url(knit.jpeg);
 }
-.img3 {
-	background-image: url(about3.jpeg);
+.sandals {
+	background-image: url(sandals.jpeg);
 }
 
 /*about.html.erb(レスポンシブ対応)*/

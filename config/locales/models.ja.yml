@@ -1,14 +1,14 @@
 ja:
   activerecord:
     models:
-      user: "ユーザー"
+      user:
     attributes:
       user:
         name: 名前
 
   activerecord:
     models:
-      garment: 投稿
+      garment:
     attributes:
       garment:
         title: タイトル

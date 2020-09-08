@@ -1,17 +1,23 @@
 class GarmentsController < ApplicationController
+
   before_action :authenticate_user!
-  # before_action :sort, only: [:index]
 
   def index
     if params[:q].present?
-    # ソートをした時の処理
+
+      # ソートをした時の処理
       @sorts = Garment.ransack(sort_params)
       @garments = @sorts.result.page(params[:page])
+      # ソートをした時の処理
+
     else
-    # ソートを行う前の処理(default)
+
+      # ソートを行う前の処理(default)
       params[:q] = { sorts: 'id desc' }
       @sorts = Garment.ransack()
       @garments = @sorts.result.page(params[:page])
+      # ソートを行う前の処理(default)
+
     end
   end
 
@@ -27,7 +33,7 @@ class GarmentsController < ApplicationController
   def create
     @garment = Garment.new(garment_params)
      if @garment.save
-        flash[:notice] = "新規投稿しました"
+　　　   flash[:notice] = "新規投稿しました"
         redirect_to garment_path(@garment.id)
      else
         render :new
@@ -63,7 +69,7 @@ class GarmentsController < ApplicationController
   private
 
   def garment_params
-    params.require(:garment).permit(:title, :body, :image, :rate, :type, :user_id, :tag_list)
+    params.require(:garment).permit(:user_id, :title, :body, :image, :type, :rate, :tag_list)
   end
 
   def sort_params

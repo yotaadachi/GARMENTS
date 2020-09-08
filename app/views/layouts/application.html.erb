@@ -25,17 +25,23 @@
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
+
+              <!-- ログイン後 -->
                 <li><%= link_to 'マイページ', user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
                 <li><%= link_to '投稿一覧', garments_path, class: "glyphicon glyphicon-camera" %></li>
                 <li><a class="btn glyphicon glyphicon-search" data-toggle="modal" data-target="#searchModal">検索</a></li>
                 <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
+              <!-- ログイン後 -->
 
               <% else %>
 
+              <!-- ログイン前 -->
                 <li><%= link_to 'Home', root_path, class: "glyphicon glyphicon-home" %></li>
                 <li><%= link_to 'About', about_path, class: "glyphicon glyphicon-list-alt" %></li>
                 <li><%= link_to '新規登録', new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
                 <li><%= link_to 'ログイン', new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+              <!-- ログイン前 -->
+
               <% end %>
             </ul>
           </nav>

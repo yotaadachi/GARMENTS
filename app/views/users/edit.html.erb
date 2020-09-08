@@ -1,8 +1,9 @@
 <div class="users-edit">
   <div class="container">
+
     <%= form_for(@user) do |f| %>
 
-    <!-- エラーメッセージ -->
+      <!-- エラーメッセージ -->
       <%= render 'layouts/error_message', model: f.object %>
       <!-- エラーメッセージ -->
 

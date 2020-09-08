@@ -50,7 +50,6 @@
 	color: white;
 	text-align: center;
 }
-
 .alert {
   	background-color: #FA8072;
 	color: white;
@@ -60,11 +59,12 @@
 .alert-warning {
 	width: 50%;
 	margin: 0 auto;
-    color:#262626;
-    background:#FFEBE8;
+    color: #262626;
+    background: #FFEBE8;
     text-align: center;
-    border:2px solid #990000;
-    padding:12px; font-weight:850;
+    border: 2px solid #990000;
+    padding: 12px;
+    font-weight: 850;
 }
 .message-tag {
 	z-index: 100;
@@ -86,7 +86,6 @@
 }
 .search-select {
 	display: inline-block;
-	border: 1px solid;
 }
 .search-word {
 	display: inline-block;
@@ -122,7 +121,6 @@
 		width: 100%;
 	}
 }
-
 
 /*registrations/new.html.erb*/
 .form-group {

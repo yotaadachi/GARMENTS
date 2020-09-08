@@ -3,6 +3,7 @@
     <h3 class="title">投稿詳細</h3>
 
     <div class="row garments-show-responsive1">
+
       <div class="col-sm-offset-3 col-sm-3">
         <%= image_tag @garment.image.to_s, class: "img-rounded", :size => '250x250' %>
 
@@ -50,7 +51,9 @@
           <span><%= render 'garments/tag_list', tag_list: @garment.tag_list %></span>
         </div>
           <!-- タグ機能 -->
+
       </div>
+
     </div>
 
     <div class="row garments-show-responsive2">
