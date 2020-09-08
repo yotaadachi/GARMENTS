@@ -1,4 +1,7 @@
 /*garments/index.html.erb*/
+.sort-bar {
+	background-color: white;
+}
 /*ページネーション本体のデザイン*/
 .pagination>li>a {
   	border: none;
@@ -45,8 +48,37 @@
 }
 .mine-edit-delete {
 }
-
 .comment-title {
 	font-size: 15px;
 	margin: 0 auto;
+}
+
+/*garments/show.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	.garments-show-responsive1 {
+		padding-left: 90px;
+	}
+	.garments-show-responsive2 {
+		padding-top: 10px;
+		padding-left: 90px;
+		width: 90%;
+	}
+	.mine-edit-delete {
+		padding: 0;
+	}
+	.mine-edit-responsive {
+		margin-right: 25px;
+	}
+}
+
+/*garments/new.html.erb*/
+.review-title {
+	width: 10%;
+}
+
+/*garments/new.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	.review-title {
+		width: 15%;
+	}
 }

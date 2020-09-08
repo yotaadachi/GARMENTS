@@ -1,67 +1,66 @@
 <div class="users-show">
 	<div class="container">
+   	<h2 class="users-show-title"><%= @user.name %>さんのページ</h2>
 
-   		<h2 class="users-show-title"><%= @user.name %>さんのページ</h2>
-
-   			<div class="col-md-3">
-   				<div class="users-img">
-   					<% if @user.profile_image? %>
-   	 					<%= image_tag @user.profile_image.to_s, class: "img-circle", :size => '200x200' %>
-   					<% else %>
-   	 					<img src="/assets/default.png" class="icon img-circle" alt="ユーザアイコン">
-   					<% end %>
-   				</div>
-     			<div class="profile-btn">
-      			<% if @user.id == current_user.id %>
-        			<%= link_to edit_user_path(current_user), class: 'btn btn-default' do %>
-         				<span>プロフィール編集</span>
-        			<% end %>
+ 			<div class="col-md-3">
+ 				<div class="users-img">
+ 					<% if @user.profile_image? %>
+ 	 					<%= image_tag @user.profile_image.to_s, class: "img-circle", :size => '200x200' %>
+ 					<% else %>
+ 	 					<img src="/assets/default.png" class="icon img-circle" alt="ユーザアイコン">
+ 					<% end %>
+ 				</div>
+   			<div class="profile-btn">
+    			<% if @user.id == current_user.id %>
+      			<%= link_to edit_user_path(current_user), class: 'btn btn-default' do %>
+       				<span>プロフィール編集</span>
       			<% end %>
-      		</div>
-      		<div id="follow_form">
-       			<%= render partial: 'relationships/follow_form', locals: { user: @user } %>
-	  			</div>
-       	</div>
-
-　　			<div class="col-md-5">
-						<p class="introduction-title">自己紹介文</p>
-						<div class="introduction">
-							<%= @user.introduction %>
-						</div>
-　　			</div>
-
-　　			<div class="col-md-4 link-group">
-					<ul>
-						<li class="link-contents">
-							<%= link_to user_follows_path(@user), class: "page-link" do %><i class="fa fa-users"></i>
-		 						<span class="follow-count"><%= @user.followings.count %></span>フォロー
-							<% end %>
-						</li>
-	  				<li class="link-contents">
-	  					<%= link_to user_followers_path(@user), class: "page-link" do %><i class="fa fa-users"></i>
-		 						<span class="follower-count"><%= @user.followers.count %></span>フォロワー
-							<% end %>
-	  				</li>
-					  <li class="link-contents">
-					  	<%= link_to user_favorites_path(@user), class: "page-link" do %><i class="glyphicon glyphicon-star"></i>お気に入り一覧
-					    <% end %>
-					  </li>
-					  <li class="link-contents">
-					  	<%= link_to myindex_path, class: "page-link" do %><i class="glyphicon glyphicon-pencil"></i>投稿一覧
-					  　<% end %>
-					　</li>
-					</ul>
-				</div>
-
-　　			<div class="col-md-12">
-					<div class="garments-form">
-						<% if @user.id == current_user.id %>
-	 						<%= link_to new_garment_path, class: 'btn btn-default btn-lg' do %>
-      					<span>新規投稿</span>
-     					<% end %>
-    				<% end %>
-   				</div>
+    			<% end %>
+    		</div>
+    		<div id="follow_form">
+     			<%= render partial: 'relationships/follow_form', locals: { user: @user } %>
   			</div>
+     	</div>
+
+　　		<div class="col-md-5">
+				<p class="introduction-title">自己紹介文</p>
+				<div class="introduction">
+					<%= @user.introduction %>
+				</div>
+　　		</div>
+
+　　		<div class="col-md-4 link-group">
+				<ul>
+					<li class="link-contents">
+						<%= link_to user_follows_path(@user), class: "page-link" do %><i class="fa fa-users"></i>
+ 							<span class="follow-count"><%= @user.followings.count %></span>フォロー
+						<% end %>
+					</li>
+					<li class="link-contents">
+						<%= link_to user_followers_path(@user), class: "page-link" do %><i class="fa fa-users"></i>
+	 						<span class="follower-count"><%= @user.followers.count %></span>フォロワー
+						<% end %>
+					</li>
+				  <li class="link-contents">
+				  	<%= link_to user_favorites_path(@user), class: "page-link" do %><i class="glyphicon glyphicon-star"></i>お気に入り一覧
+				    <% end %>
+				  </li>
+				  <li class="link-contents">
+				  	<%= link_to myindex_path, class: "page-link" do %><i class="glyphicon glyphicon-pencil"></i>投稿一覧
+				  　<% end %>
+				　</li>
+				</ul>
+			</div>
+
+　　		<div class="col-md-12">
+				<div class="garments-form">
+					<% if @user.id == current_user.id %>
+						<%= link_to new_garment_path, class: 'btn btn-default btn-lg' do %>
+  						<span>新規投稿</span>
+ 						<% end %>
+					<% end %>
+				</div>
+			</div>
 
  	</div>
 </div>

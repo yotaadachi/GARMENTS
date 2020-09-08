@@ -1,6 +1,11 @@
 <div class="users-edit">
   <div class="container">
+
     <%= form_for(@user) do |f| %>
+
+      <!-- エラーメッセージ -->
+      <%= render 'layouts/error_message', model: f.object %>
+      <!-- エラーメッセージ -->
 
       <div class="row">
         <p id="notice"></p>
@@ -44,9 +49,6 @@
 
     <% end %>
 
-    <% if @user.errors.any? %>
-      <p>errors prohibited this user from being saved:</p>
-    <% end %>
 
   </div>
 </div>

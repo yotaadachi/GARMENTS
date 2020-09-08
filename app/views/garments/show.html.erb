@@ -2,8 +2,9 @@
   <div class="container">
     <h3 class="title">投稿詳細</h3>
 
-    <div class="row">
-      <div class="col-xs-offset-3 col-xs-3">
+    <div class="row garments-show-responsive1">
+
+      <div class="col-sm-offset-3 col-sm-3">
         <%= image_tag @garment.image.to_s, class: "img-rounded", :size => '250x250' %>
 
         <!-- 星による評価機能 -->
@@ -28,7 +29,7 @@
         <!-- 星による評価機能 -->
       </div>
 
-      <div class="col-xs-3">
+      <div class="col-sm-3">
         <div class="panel panel-default panel-size">
           <div class="panel-heading">
             <h5 class="panel-title"><%= @garment.title %></h5>
@@ -50,11 +51,13 @@
           <span><%= render 'garments/tag_list', tag_list: @garment.tag_list %></span>
         </div>
           <!-- タグ機能 -->
+
       </div>
+
     </div>
 
-    <div class="row">
-      <div class="col-xs-offset-3 col-xs-6">
+    <div class="row garments-show-responsive2">
+      <div class="col-sm-offset-3 col-sm-6">
           <!-- お気に入り機能 -->
         <div id="favorite_button_<%= @garment.id %>">
           <%= render partial: 'favorites/favorite', locals: { garment: @garment } %>
@@ -64,7 +67,7 @@
            <!-- 投稿編集・削除機能 -->
         <div class="text-center mine-edit-delete">
       　　<% if @garment.user.id == current_user.id %>
-        　　<%= link_to "投稿編集", edit_garment_path, class: "btn btn-success" %>
+        　　<%= link_to "投稿編集", edit_garment_path, class: "btn btn-success mine-edit-responsive" %>
         　　<%= link_to "投稿削除", garment_path(@garment), method: :delete, "data-confirm" => "本当に消してもいいですか?", class: "btn btn-danger" %>
           <% end %>
         </div>

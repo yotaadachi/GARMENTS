@@ -36,12 +36,90 @@
 	color: white;
 	font-size: 15 px;
 	font-family: 'Noto Sans JP', sans-serif;
+	padding-top: 15px;
 }
 .navbar-title {
 	line-height: 50px;
     padding-left: 15px;
     font-family: 'Rowdies', cursive;
     font-size: 2.5rem;
+}
+/*エラーメッセージ*/
+.notice {
+	background-color: #90EE90;
+	color: white;
+	text-align: center;
+}
+.alert {
+  	background-color: #FA8072;
+	color: white;
+	text-align: center;
+	padding: 0px;
+}
+.alert-warning {
+	width: 50%;
+	margin: 0 auto;
+    color: #262626;
+    background: #FFEBE8;
+    text-align: center;
+    border: 2px solid #990000;
+    padding: 12px;
+    font-weight: 850;
+}
+.message-tag {
+	z-index: 100;
+	position: relative;
+	line-height: 40px;
+	padding-top: 50px;
+}
+/*検索モーダル*/
+.modal-header {
+	border-bottom: 1px solid #e5e5e5;
+}
+.modal-body {
+	position: relative;
+    padding: 15px;
+}
+.search-form {
+	margin: 20px;
+    text-align: center;
+}
+.search-select {
+	display: inline-block;
+}
+.search-word {
+	display: inline-block;
+	border: 1px solid;
+}
+.search-text {
+	border: 1px solid;
+}
+.modal-footer {
+	padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+/*application.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	header {
+		width: 100%;
+	}
+
+	body {
+		width: 100%;
+		height: 1220px;
+		margin-top: 150px;
+	}
+	.message-tag {
+		padding-top: 85px;
+	}
+	.navbar-nav li a {
+		text-align: left;
+	}
+	footer {
+		width: 100%;
+	}
 }
 
 /*registrations/new.html.erb*/
@@ -71,4 +149,19 @@
 }
 .signin-link {
 	text-align: left;
+
+}
+
+/*registrations/new.html.erb(レスポンシブ対応)*/
+@media screen and (max-width: 425px) {
+	.password-group {
+		height: 50px;
+	}
+	.password-form {
+		width: 150px;
+	}
+	.password-length {
+		width: 300px;
+		padding-left: 15px;
+	}
 }
