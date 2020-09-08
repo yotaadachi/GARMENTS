@@ -3,7 +3,7 @@
 	width: 100%;
 	background-image: url(topimage.jpeg);
 	background-repeat: no-repeat;
-	background-position: center;
+	background-position: 20% 20%;
 	background-size: cover;
 }
 .top::before {
@@ -69,6 +69,7 @@
 @media screen and (max-width: 425px) {
 	.top {
 		height: 1000px;
+		background-position: center;
 	}
 }
 
