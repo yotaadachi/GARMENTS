@@ -4,6 +4,10 @@
 
    		<%= form_for(@garment) do |f| %>
 
+   		<!-- エラーメッセージ -->
+   		<%= render 'layouts/error_message', model: f.object %>
+      <!-- エラーメッセージ -->
+
    			<div class="row">
    				<div class="form-group">
 	   				<div class="row">
@@ -15,25 +19,25 @@
 					</div>
 				</div>
 
-			　<div class="row">
+				<div class="row">
         	<div class="form-group">
           	<div class="row">
 							<%= f.label :タイトル, class: "control-label text-left col-sm-2 col-md-2" %><br />
             </div>
 							<%= f.text_field :title, class: "form-control" %>
 					</div>
-			　</div>
+				</div>
 
-			　<div class="row">
+				<div class="row">
         	<div class="form-group">
           	<div class="row">
 							<%= f.label :カテゴリー, class: "control-label text-left col-sm-2 col-md-2" %><br />
 						</div>
 							<%= f.select :type, Garment.types.keys.to_a, include_blank: '選択してください' %>
 					</div>
-			　</div>
+				</div>
 
-			　<div class="row">
+				<div class="row">
         	<div class="form-group">
           	<div class="row">
 							<%= f.label :本文, class: "control-label text-left col-sm-2 col-md-2" %><br />
@@ -75,7 +79,7 @@
 				});
 			  </script>
 			  <%= f.hidden_field :user_id, value: current_user.id %>
-　　　　 <!-- 星による評価機能 -->
+			  <!-- 星による評価機能 -->
 
 				<div class="row">
         	<div class="form-group">
@@ -83,10 +87,6 @@
 					</div>
 				</div>
 
-			<% end %>
-
-			<% if @garment.errors.any? %>
-				<p>エラーにより、更新できませんでした</p>
 			<% end %>
 
 	</div>

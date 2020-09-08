@@ -33,7 +33,7 @@ class GarmentsController < ApplicationController
   def create
     @garment = Garment.new(garment_params)
      if @garment.save
-　　　   flash[:notice] = "新規投稿しました"
+        flash[:notice] = "新規投稿しました"
         redirect_to garment_path(@garment.id)
      else
         render :new
@@ -55,6 +55,7 @@ class GarmentsController < ApplicationController
        flash[:notice] = "投稿内容を更新しました"
        redirect_to garment_path(@garment.id)
     else
+       flash[:alert] = "エラーにより投稿内容を更新できません"
        render :edit
     end
   end
