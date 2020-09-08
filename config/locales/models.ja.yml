@@ -2,14 +2,10 @@ ja:
   activerecord:
     models:
       user:
+      garment:
     attributes:
       user:
         name: 名前
-
-  activerecord:
-    models:
-      garment:
-    attributes:
       garment:
         title: タイトル
         body: 本文

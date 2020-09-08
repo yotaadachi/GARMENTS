@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_garments, through: :favorites, source: :garment
 
+  #バリデーション
+  validates :name, presence: true
+  validates :introduction, length: { maximum: 200 }
+
   # プロフィール画像
   mount_uploader :profile_image, ImageUploader
 
@@ -18,10 +22,6 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relaionships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relaionships, source: :user
-
-  #各カラムバリデーション
-  validates :name, presence: true
-  validates :introduction, length: { maximum: 200 }
 
   def follow(other_user)
     unless self == other_user

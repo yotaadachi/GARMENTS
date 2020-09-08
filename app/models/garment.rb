@@ -3,6 +3,14 @@ class Garment < ApplicationRecord
 	belongs_to :user
 	has_many :comments, dependent: :destroy
 
+	# バリデーション
+	validates :title, presence: true, length: { minimum: 1 }
+	validates :body, presence: true, length: { maximum: 200 }
+	validates :type, presence: true
+	validates :image, presence: true
+	validates :rate, presence: true
+	validates :tag_list, presence: true
+
 	#お気に入り機能
 	has_many :favorites, dependent: :destroy
 
@@ -18,14 +26,6 @@ class Garment < ApplicationRecord
 
 	# タグづけ機能
 	acts_as_taggable
-
-	# 各カラムバリデーション
-	validates :title, presence: true, length: { minimum: 1 }
-	validates :body, presence: true, length: { maximum: 200 }
-	validates :type, presence: true
-	validates :image, presence: true
-	validates :rate, presence: true
-	validates :tag_list, presence: true
 
 	# 新規投稿カテゴリ
 	enum type:{
@@ -43,7 +43,6 @@ class Garment < ApplicationRecord
 		その他: 11, #その他
 	}
 
-	# attr_accessible  :data, :type
 	self.inheritance_column = :_type_disabled
 
 	# 新規投稿星による評価
@@ -59,6 +58,5 @@ class Garment < ApplicationRecord
      def Garment.search(word)
        Garment.where(["title LIKE?", "#{word}"])
      end
-
 
 end
