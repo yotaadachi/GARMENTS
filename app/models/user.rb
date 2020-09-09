@@ -13,6 +13,8 @@ class User < ApplicationRecord
   #バリデーション
   validates :name, presence: true
   validates :introduction, length: { maximum: 200 }
+  validates :email, presence: true
+  validates :password, presence: true
 
   # プロフィール画像
   mount_uploader :profile_image, ImageUploader
