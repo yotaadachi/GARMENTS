@@ -11,10 +11,10 @@
             <td><div class="text-center">
               <%= link_to user_path(user), class: "profile-image" do %>
                 <% if user.profile_image? %>
-           　      <%= image_tag user.profile_image.to_s, :size => "50x50" %>
-          　     <% else %>
-           　      <%= image_tag asset_path("default.png", alt: "ユーザーアイコン", :size => "50x50") %>
-          　     <% end %>
+                  <%= image_tag user.profile_image.to_s, :size => "50x50" %>
+                <% else %>
+                  <%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
+                <% end %>
               <% end %>
             </div>
             </td>
@@ -22,8 +22,8 @@
             <td>フォロー数:<%= user.followings.count %></td>
             <td>フォロワー数:<%= user.followers.count %></td>
             <td></td>
-      　　   <td><%= link_to "詳細", user_path(user.id) %></td>
-      　　</tr>
+            <td><%= link_to "詳細", user_path(user.id) %></td>
+          </tr>
          <% end %>
         </tbody>
 
