@@ -11,9 +11,9 @@
   		</div>
   		<!-- 並び替えタブ -->
 
-	　　<table class="table">
+	   <table class="table">
 
-　　　　<thead>
+      <thead>
 				<tr>
 			 		<th class="text-center">投稿者</th>
 		     	<th>タイトル</th>
@@ -29,10 +29,10 @@
 		 			<td><div class="text-center">
 		 						<%= link_to user_path(garment.user), class: "profile-image" do %>
 		   						<% if garment.user.profile_image? %>
-   	 　　　   				<%= image_tag garment.user.profile_image.to_s, :size => "50x50" %>
-   	　　　　 				<% else %>
-   	 　　　　　				<%= image_tag asset_path("default.png", alt: "ユーザーアイコン", :size => "50x50") %>
-   	　　　　 				<% end %>
+   	        				<%= image_tag garment.user.profile_image.to_s, :size => "50x50" %>
+   	      				<% else %>
+   	          			<%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
+   	      				<% end %>
 		  					<% end %>
 		  				</div>
 		  				<br><div class="text-center"><%= garment.user.name %></div>
