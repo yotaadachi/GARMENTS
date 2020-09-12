@@ -60,6 +60,14 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+
+  #テスト実行時にアップロードされた画像ファイル、一時保存ファイルを消す
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp/*"])
+    end
+  end
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
