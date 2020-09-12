@@ -4,6 +4,7 @@ ja:
       user:
       garment:
       comment:
+      relationship:
     attributes:
       user:
         name: 名前
@@ -18,3 +19,6 @@ ja:
       comment:
         body: コメント
         garment: 投稿
+      relationship:
+        other_user:
+        user_relationship:
