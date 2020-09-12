@@ -3,6 +3,7 @@ ja:
     models:
       user:
       garment:
+      comment:
     attributes:
       user:
         name: 名前
@@ -14,3 +15,6 @@ ja:
         image: 写真
         rate: 評価
         tag_list: タグ
+      comment:
+        body: コメント
+        garment: 投稿

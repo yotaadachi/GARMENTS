@@ -7,6 +7,18 @@ RSpec.describe Garment, type: :model do
 		@garment = FactoryBot.build(:garment)
 	end
 
+	describe "アソシエーションのテスト" do
+
+		it "投稿:ユーザー = N:1の関係となっている" do
+    	expect(Garment.reflect_on_association(:user).macro).to eq :belongs_to
+    end
+
+    it "投稿:コメント = 1:Nの関係となっている" do
+    	expect(Garment.reflect_on_association(:comments).macro).to eq :has_many
+    end
+
+  end
+
 	it "有効なファクトリを持つこと" do
 		@garment.user_id = @user.id
 		expect(@garment).to be_valid

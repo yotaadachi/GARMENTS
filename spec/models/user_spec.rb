@@ -6,6 +6,18 @@ RSpec.describe User, type: :model do
 		@user = FactoryBot.build(:user)
 	end
 
+	describe "アソシエーションのテスト" do
+
+		it "ユーザー:投稿 = 1:Nの関係となっている" do
+			expect(User.reflect_on_association(:garments).macro).to eq :has_many
+		end
+
+		it "ユーザー:コメント = 1:Nの関係となっている" do
+			expect(User.reflect_on_association(:comments).macro).to eq :has_many
+		end
+
+	end
+
 	it "有効なファクトリを持つこと" do
     expect(FactoryBot.build(:user)).to be_valid
   end
@@ -43,12 +55,12 @@ RSpec.describe User, type: :model do
 
   describe "文字数の検証" do
 
-  	it "名前が30文字以内の場合、有効である。" do
+  	it "名前が30文字以内の場合、有効である" do
   		@user.name = "a" * 30
   		expect(@user).to be_valid
   	end
 
-  	it "名前が30文字以上の場合、無効である。" do
+  	it "名前が30文字以上の場合、無効である" do
   		@user.name = "a" * 31
   		@user.valid?
   		expect(@user.errors).to be_added(:name, :too_long, count: 30)

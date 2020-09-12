@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :garment do
+    user_id { 1 }
     title { "testtitle" }
     body { "testbody" }
     type { 1 }
