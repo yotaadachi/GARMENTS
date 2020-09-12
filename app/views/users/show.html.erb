@@ -3,6 +3,7 @@
    	<h2 class="users-show-title"><%= @user.name %>さんのページ</h2>
 
  			<div class="col-md-3">
+
  				<div class="users-img">
  					<% if @user.profile_image? %>
  	 					<%= image_tag @user.profile_image.to_s, class: "img-circle", :size => "200x200" %>
@@ -10,6 +11,7 @@
  	 					<%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), class: "img-circle", :size => "200x200" %>
  					<% end %>
  				</div>
+
    			<div class="profile-btn">
     			<% if @user.id == current_user.id %>
       			<%= link_to edit_user_path(current_user), class: 'btn btn-default' do %>
@@ -20,6 +22,7 @@
     		<div id="follow_form">
      			<%= render partial: 'relationships/follow_form', locals: { user: @user } %>
   			</div>
+
      	</div>
 
   		<div class="col-md-5">

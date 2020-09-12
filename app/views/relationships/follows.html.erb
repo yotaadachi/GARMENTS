@@ -8,7 +8,7 @@
        <tbody>
         <% @users.each do |user| %>
         <tr>
-        	<td>
+          <td>
             <div class="text-center">
                 <%= link_to user_path(user), class: "profile-image" do %>
                   <% if user.profile_image? %>
@@ -17,8 +17,8 @@
                     <%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
                   <% end %>
                 <% end %>
-              </div>
-            </td>
+            </div>
+          </td>
           <td><%= user.name %></td>
           <td>フォロー数:<%= user.followings.count %></td>
           <td>フォロワー数:<%= user.followers.count %></td>

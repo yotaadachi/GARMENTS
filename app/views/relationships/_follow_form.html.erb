@@ -1,23 +1,23 @@
 <% unless current_user == user %>
 
-	<% if current_user.followings?(user) %>
+  <% if current_user.followings?(user) %>
 
-		<!-- フォロー解除 -->
-  	<%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
-   		<%= f.hidden_field :follow_id, value: user.id %>
-   		<%= f.submit "フォローを外す", class: "btn btn-default" %>
-  	<% end %>
-		<!-- フォロー解除 -->
+    <!-- フォロー解除 -->
+    <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+      <%= f.hidden_field :follow_id, value: user.id %>
+      <%= f.submit "フォローを外す", class: "btn btn-default" %>
+    <% end %>
+    <!-- フォロー解除 -->
 
- 	<% else %>
+  <% else %>
 
- 		<!-- フォロー -->
-  	<%= form_for(current_user.relationships.build, url:relationships_path) do |f| %>
-   		<%= f.hidden_field :follow_id, value: user.id %>
-   		<%= f.submit "フォローする", class: "btn btn-default" %>
-  	<% end %>
-  	<!-- フォロー -->
+    <!-- フォロー -->
+    <%= form_for(current_user.relationships.build, url:relationships_path) do |f| %>
+      <%= f.hidden_field :follow_id, value: user.id %>
+      <%= f.submit "フォローする", class: "btn btn-default" %>
+    <% end %>
+    <!-- フォロー -->
 
- 	<% end %>
+  <% end %>
 
 <% end %>

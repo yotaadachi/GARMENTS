@@ -9,7 +9,7 @@
 
         <!-- 星による評価機能 -->
         <div class="review-star">
-      　　 <div id="star">
+          <div id="star">
             <label for="review",class="control-label text-left col-sm-2 col-md-2">評価</label>
           </div>
         </div>
@@ -67,9 +67,9 @@
 
            <!-- 投稿編集・削除機能 -->
         <div class="text-center mine-edit-delete">
-      　　<% if @garment.user.id == current_user.id %>
-        　　<%= link_to "投稿編集", edit_garment_path, class: "btn btn-success mine-edit-responsive" %>
-        　　<%= link_to "投稿削除", garment_path(@garment), method: :delete, "data-confirm" => "本当に消してもいいですか?", class: "btn btn-danger" %>
+          <% if @garment.user.id == current_user.id %>
+            <%= link_to "投稿編集", edit_garment_path, class: "btn btn-success mine-edit-responsive" %>
+            <%= link_to "投稿削除", garment_path(@garment), method: :delete, "data-confirm" => "本当に消してもいいですか?", class: "btn btn-danger" %>
           <% end %>
         </div>
           <!-- 投稿編集・削除機能 -->
