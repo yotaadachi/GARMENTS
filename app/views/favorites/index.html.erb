@@ -18,15 +18,16 @@
        <tbody>
         <% @user.favorites.each do |favorite| %>
         <tr>
-          <td><div class="text-center">
-                <%= link_to user_path(favorite.garment.user), class: "profile-image" do %>
-                  <% if favorite.garment.user.profile_image? %>
-                    <%= image_tag favorite.garment.user.profile_image.to_s, :size => "50x50" %>
+          <td>
+            <div class="text-center">
+              <%= link_to user_path(favorite.garment.user), class: "profile-image" do %>
+                <% if favorite.garment.user.profile_image? %>
+                  <%= image_tag favorite.garment.user.profile_image.to_s, :size => "50x50" %>
                 <% else %>
-                    <%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
-                  <% end %>
+                  <%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
                 <% end %>
-              </div>
+              <% end %>
+            </div>
             <br><div class="text-center"><%= favorite.garment.user.name %></div>
           </td>
           <td><%= link_to garment_path(favorite.garment) do %>
@@ -38,7 +39,7 @@
           <td id="favorite_button_<%= favorite.garment.id %>">
             <%= render partial: 'favorites/favorite', locals: { garment: favorite.garment } %>
           </td>
-       </tr>
+        </tr>
         <% end %>
        </tbody>
 
