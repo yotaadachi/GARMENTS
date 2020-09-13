@@ -11,8 +11,9 @@ class User < ApplicationRecord
   has_many :favorite_garments, through: :favorites, source: :garment
 
   #バリデーション
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 30 }
   validates :introduction, length: { maximum: 200 }
+  validates :email, presence: true
 
   # プロフィール画像
   mount_uploader :profile_image, ImageUploader

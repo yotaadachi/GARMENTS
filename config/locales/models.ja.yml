@@ -3,9 +3,12 @@ ja:
     models:
       user:
       garment:
+      comment:
+      relationship:
     attributes:
       user:
         name: 名前
+        introduction: 自己紹介文
       garment:
         title: タイトル
         body: 本文
@@ -13,3 +16,10 @@ ja:
         image: 写真
         rate: 評価
         tag_list: タグ
+      comment:
+        body: コメント
+        garment: 投稿
+      relationship:
+        follow_id: フォローid
+        other_user: 他ユーザー
+        user_relationship:

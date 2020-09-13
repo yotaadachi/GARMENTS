@@ -4,7 +4,7 @@ class Garment < ApplicationRecord
 	has_many :comments, dependent: :destroy
 
 	# バリデーション
-	validates :title, presence: true, length: { minimum: 1 }
+	validates :title, presence: true
 	validates :body, presence: true, length: { maximum: 200 }
 	validates :type, presence: true
 	validates :image, presence: true
