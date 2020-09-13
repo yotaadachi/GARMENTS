@@ -20,31 +20,34 @@
 				<tbody>
 					<% @garments.each do |garment| %>
 						<tr>
-							<td><div class="text-center">
-								<%= link_to user_path(garment.user), class: "profile-image" do %>
-									<% if garment.user.profile_image? %>
-										<%= image_tag garment.user.profile_image.to_s, :size => "50x50" %>
-									<% else %>
-										<%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
-									<% end %>
-								<% end %><br><div class="text-center"><%= garment.user.name %></div>
+							<td>
+								<div class="text-center">
+									<%= link_to user_path(garment.user), class: "profile-image" do %>
+										<% if garment.user.profile_image? %>
+											<%= image_tag garment.user.profile_image.to_s, :size => "50x50" %>
+										<% else %>
+											<%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
+										<% end %>
+									<% end %><br><div class="text-center"><%= garment.user.name %></div>
 							</td>
-							<td><%= link_to garment_path(garment) do %>
-										<%= garment.title %>
-									<% end %>
+							<td>
+								<%= link_to garment_path(garment) do %>
+									<%= garment.title %>
+								<% end %>
 							</td>
-							<td><span class="label label-primary"><%= garment.type %></span></td></td>
+							<td><span class="label label-primary"><%= garment.type %></span></td>
 							<td><%= garment.created_at.strftime('%Y年%m月%d日%H時%M分') %></td>
-							<td><%= link_to garment_path(garment) do %>
-										<p>詳細</p>
-									<% end %>
+							<td>
+								<%= link_to garment_path(garment) do %>
+									<p>詳細</p>
+								<% end %>
 							</td>
 						</tr>
 					<% end %>
 				</tbody>
 				<!-- garments検索結果 -->
 
-				<% else %>
+			<% else %>
 
 				<!-- ユーザー検索結果 -->
 				<h3 class="title">ユーザー検索結果</h3>
@@ -61,14 +64,15 @@
 				<tbody>
 					<% @users.each do |user| %>
 						<tr>
-							<td><div class="text-center">
-								<%= link_to user_path(user), class: "profile-image" do %>
-									<% if user.profile_image? %>
-										<%= image_tag user.profile_image.to_s, :size => '50x50' %>
-									<% else %>
-										<%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
-									<% end %>
-								<% end %><br><%= user.name %></div>
+							<td>
+								<div class="text-center">
+									<%= link_to user_path(user), class: "profile-image" do %>
+										<% if user.profile_image? %>
+											<%= image_tag user.profile_image.to_s, :size => '50x50' %>
+										<% else %>
+											<%= image_tag asset_path("default.png", alt: "ユーザーアイコン"), :size => '50x50' %>
+										<% end %>
+									<% end %><br><%= user.name %></div>
 							</td>
 							<td></td>
 							<td><%= user.introduction %></td>
@@ -80,7 +84,7 @@
 
 			<% end %>
 
-		</table>
+			</table>
 
 		</div>
 	</div>
