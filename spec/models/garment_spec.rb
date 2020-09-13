@@ -7,9 +7,9 @@ RSpec.describe Garment, type: :model do
 		@garment = FactoryBot.build(:garment)
 	end
 
-	describe "アソシエーションのテスト" do
+	describe "アソシエーションの検証" do
 
-	it "投稿:ユーザー = N:1の関係となっている" do
+		it "投稿:ユーザー = N:1の関係となっている" do
     	expect(Garment.reflect_on_association(:user).macro).to eq :belongs_to
     end
 

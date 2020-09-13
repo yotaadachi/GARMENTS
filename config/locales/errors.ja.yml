@@ -1,6 +1,7 @@
 ja:
   errors:
     messages:
+      taken: "は既に登録済みです"
       not_found: "は見つかりませんでした"
       already_confirmed: "は既に登録済みです"
       not_locked: "は凍結されていません"

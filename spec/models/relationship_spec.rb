@@ -2,27 +2,45 @@ require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
 
-	let(:user) { create(:user) }
-	let(:other_user) { create(:user) }
-	let(:user_relationship) { user.active_relationships.build(follow_id: other_user.id) }
-
-	it "リレーションシップが有効かどうか" do
-		expect(user_relationship).to be_valid
+	before do
+		@user = create(:user)
 	end
 
-	describe "フォロワーの検証" do
+	describe "アソシエーションの検証" do
 
-		it "フォローしたユーザーを返す" do
-			expect(user_relationship.follower).to eq(user)
+		it "relationship:ユーザー = N:1の関係となっている" do
+			expect(Relationship.reflect_on_association(:user).macro).to eq :belongs_to
 		end
 
 	end
 
-	describe "フォローの検証" do
+	describe "登録の検証" do
 
-		it "フォローしているユーザーを返す" do
-			expect(user_relationship.follow).to eq(other_user)
-		end
+		it "user_id, follow_idの全てが存在すれば登録できる" do
+	    relationship = build(:relationship)
+	    expect(relationship).to be_valid
+	  end
 
-	end
+	  it "user_idが存在しない場合は登録できない" do
+	    relationship = build(:relationship, user_id: nil)
+	    relationship.valid?
+	    expect(relationship.errors[:user]).to include("は必須項目です")
+	  end
+
+	  it "follow_idが存在しない場合は登録できない" do
+	    relationship = build(:relationship, follow_id: nil)
+	    relationship.valid?
+	    expect(relationship.errors[:follow]).to include("は必須項目です")
+	  end
+
+	  it "user_id, follow_idの組み合わせは一意でなければならない" do
+	    other = create(:user, email: "a@a.com")
+	    create(:relationship, user: @user, follow: other)
+	    relationship2 = build(:relationship, user: @user, follow: other)
+	    relationship2.valid?
+	    expect(relationship2.errors[:follow_id]).to include("は既に登録済みです")
+	 	end
+
+ 	end
+
 end

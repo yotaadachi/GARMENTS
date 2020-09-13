@@ -6,4 +6,5 @@ class Relationship < ApplicationRecord
 	# バリデーション
 	validates :user_id, presence: true
 	validates :follow_id, presence: true
+  validates :follow_id, uniqueness: { scope: :user_id }
 end

@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 		@user = FactoryBot.build(:user)
 	end
 
-	describe "アソシエーションのテスト" do
+	describe "アソシエーションの検証" do
 
 		it "ユーザー:投稿 = 1:Nの関係となっている" do
 			expect(User.reflect_on_association(:garments).macro).to eq :has_many
@@ -16,6 +16,14 @@ RSpec.describe User, type: :model do
 			expect(User.reflect_on_association(:comments).macro).to eq :has_many
 		end
 
+    it "ユーザー:お気に入り = 1:Nの関係となっている" do
+      expect(User.reflect_on_association(:favorites).macro).to eq :has_many
+    end
+
+    it "ユーザー:relationship = 1:Nの関係となっている" do
+      expect(User.reflect_on_association(:relationships).macro).to eq :has_many
+    end
+
 	end
 
 	it "有効なファクトリを持つこと" do
@@ -23,12 +31,12 @@ RSpec.describe User, type: :model do
   end
 
   it "名前、メールアドレス、パスワードがある場合、有効である" do
-			user = User.new(
-			name: "testuser",
-			email: "test@mail.com",
-			password: "password"
-			)
-			expect(user).to be_valid
+		user = User.new(
+		name: "testuser",
+		email: "test@mail.com",
+		password: "password"
+		)
+		expect(user).to be_valid
 	end
 
 	describe "存在の検証" do

@@ -20,5 +20,6 @@ ja:
         body: コメント
         garment: 投稿
       relationship:
-        other_user:
+        follow_id: フォローid
+        other_user: 他ユーザー
         user_relationship:

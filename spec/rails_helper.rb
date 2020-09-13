@@ -64,7 +64,7 @@ RSpec.configure do |config|
   #テスト実行時にアップロードされた画像ファイル、一時保存ファイルを消す
   config.after(:all) do
     if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_test/*"])
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/tmp/*"])
     end
   end

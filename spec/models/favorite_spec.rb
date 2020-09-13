@@ -8,7 +8,7 @@ RSpec.describe Favorite, type: :model do
 		@favorite = FactoryBot.build(:favorite)
 	end
 
-	describe "アソシエーションのテスト" do
+	describe "アソシエーションの検証" do
 
 		it "お気に入り:ユーザー = N:1の関係となっている" do
 			expect(Favorite.reflect_on_association(:user).macro).to eq :belongs_to
