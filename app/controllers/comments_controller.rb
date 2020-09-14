@@ -4,7 +4,11 @@ class CommentsController < ApplicationController
 	  @garment = Garment.find(params[:garment_id])
 	  comment = @garment.comments.new(comment_params)
 	  comment.user_id = current_user.id
-	  comment.save
+	  comment_garment = comment.garment
+	  if comment.save
+	  	#通知機能
+	  	comment_garment.create_notification_comment!(current_user, comment.id)
+	  end
 	  @comment = Comment.new
 	end
 
