@@ -10,10 +10,10 @@ module NotificationsHelper
       when "follow" then
         tag.a(notification.visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"があなたをフォローしました"
       when "favorite" then
-        tag.a(notification.visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:myindex_path(notification.garment_id), style:"font-weight: bold;")+"にいいねしました"
+        tag.a(notification.visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:garment_path(notification.garment_id), style:"font-weight: bold;")+"にいいねしました"
       when "comment" then
-        @comment = Comment.find_by(id: @visiter_comment)&.content
-        tag.a(@visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:users_item_path(notification.item_id), style:"font-weight: bold;")+"にコメントしました"
+        @comment = Comment.find_by(id: @visiter_comment)&.committed!
+        tag.a(@visiter.name, href:user_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:garment_path(notification.garment_id), style:"font-weight: bold;")+"にコメントしました"
     end
   end
 
