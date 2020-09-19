@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def myindex
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
 
       # ソートを行う前の処理(default)
       params[:q] = { sorts: 'id desc' }
-      @sorts = @user.garments.ransack()
+      @sorts = @user.garments.ransack
       @garments = @sorts.result.page(params[:page])
       # ソートを行う前の処理(default)
 
@@ -27,20 +26,20 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     if @user == current_user
-       render :edit
+      render :edit
     else
-       redirect_to user_path(current_user)
+      redirect_to user_path(current_user)
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-       flash[:notice] = "ユーザ情報が更新されました"
-       redirect_to user_path(@user.id)
+      flash[:notice] = "ユーザ情報が更新されました"
+      redirect_to user_path(@user.id)
     else
-       flash[:alert] = "ユーザ情報を更新できませんでした"
-       render :edit
+      flash[:alert] = "ユーザ情報を更新できませんでした"
+      render :edit
     end
   end
 
@@ -53,5 +52,4 @@ class UsersController < ApplicationController
   def sort_params
     params.require(:q).permit(:sorts)
   end
-
 end

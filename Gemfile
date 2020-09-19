@@ -74,7 +74,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'carrierwave', '~> 2.0'
 gem 'rmagick'
 gem 'fog-aws'
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'ransack'
 gem 'dotenv-rails'
 group :production do

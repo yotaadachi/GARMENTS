@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  #リレーション
+  # リレーション
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :garments, dependent: :destroy
@@ -18,23 +18,23 @@ class User < ApplicationRecord
 
   def follow(other_user)
     unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
+      relationships.find_or_create_by(follow_id: other_user.id)
     end
   end
 
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship = relationships.find_by(follow_id: other_user.id)
     relationship.destroy if relationship
   end
 
   def followings?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
   end
 
-  #通知機能
+  # 通知機能
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-  #フォロー時の通知
+  # フォロー時の通知
   def create_notification_follow!(current_user)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_user.id, id, "follow"])
     if temp.blank?
@@ -46,9 +46,7 @@ class User < ApplicationRecord
     end
   end
 
-
-
-  #バリデーション
+  # バリデーション
   validates :name, presence: true, length: { maximum: 30 }
   validates :introduction, length: { maximum: 200 }
   validates :email, presence: true
@@ -56,9 +54,8 @@ class User < ApplicationRecord
   # プロフィール画像
   mount_uploader :profile_image, ImageUploader
 
-  #検索機能
+  # 検索機能
   def User.search(word)
     User.where(["name LIKE?", "#{word}"])
   end
-
 end

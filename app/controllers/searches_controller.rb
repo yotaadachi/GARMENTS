@@ -1,23 +1,20 @@
 class SearchesController < ApplicationController
-
   def index
-  	@range = params[:range]
-  	word = params[:word]
+    @range = params[:range]
+    word = params[:word]
 
-  	if @range == '1'
+    if @range == '1'
 
-  		# ユーザー検索結果
-  	  @users = User.search(word)
-  		# ユーザー検索結果
+      # ユーザー検索結果
+      @users = User.search(word)
+      # ユーザー検索結果
 
-  	else
+    else
 
-  		# garments検索結果
-  	  @garments = Garment.search(word)
-  		# garments検索結果
+      # garments検索結果
+      @garments = Garment.search(word)
+      # garments検索結果
 
-  	end
-
+    end
   end
-
 end

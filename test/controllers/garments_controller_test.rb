@@ -35,5 +35,4 @@ class GarmentsControllerTest < ActionDispatch::IntegrationTest
     get garments_destroy_url
     assert_response :success
   end
-
 end
